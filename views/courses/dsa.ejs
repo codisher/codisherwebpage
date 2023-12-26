@@ -1,0 +1,110 @@
+<%-include('../partials/header')-%>
+
+    <!-- header section -->
+    <div class="bg-light flex flex-col-reverse items-center px-5 w-full md:px-16 py-14 sm:flex-row">
+      <div class="w-full  sm:space-y-3">
+        <p class="color-primary text-2xl md:text-5xl font-extrabold">Start Your Learning as</p>
+        <p class="color-yellow -mt-1 text-2xl md:text-5xl font-extrabold"><%=coursedata.name%></p>
+        <p class="color-primary mt-2 md:text-lg text-sm">
+         
+        </p>
+      </div>
+      
+      <div class="w-full flex justify-end items-center">
+        <img src="<%=coursedata.courseimage%>" alt="avatar" class="md:h-80" />
+      </div>
+    </div>
+
+    <!-- course detail summary -->
+    <div class="bg-white  shadow-xl w-[92%] flex flex-col sm:w-[840px] sm:flex sm:flex-row justify-center items-center space-y-2 sm:space-x-10 sm:space-y-0 mx-auto p-5
+       rounded-xl  -mt-10 ">
+      <div class=" flex flex-row w-[92%]  sm:px-0 justify-center  sm:justify-between ">
+           <div class="flex items-center space-x-2 pr-5 sm:pr-0">
+            <img src="https://img.icons8.com/android/24/null/clock.png"
+            class="bg-light p-1 rounded h-[30px] w-[30px] sm:h-[50px] sm:w-[50px] sm:p-3 " />
+            <p class="text-xs font-bold sm:text-lg  ">
+              Course Duration
+              </br>
+              <%=coursedata.duration%> months
+            </p>
+           </div>
+           <!--Dusri heading -->
+           <div class="flex items-center space-x-2 pl-5">
+            <img src="https://img.icons8.com/material-two-tone/24/null/rupee.png"
+            class="bg-light p-1 rounded h-[30px] w-[30px] sm:h-[50px] sm:w-[50px] sm:p-3 " />
+            <p class="text-xs font-bold sm:text-lg  ">
+              Program Fee
+              </br>
+              ₹<%=coursedata.fee%>/month
+            </p>
+           </div>
+      </div>
+      <div >
+        <button
+        class=" w-[140px]  md:w-[200px]  bg-dark text-white sm:py-4 sm:px-12 sm:mx-10 px-3 py-2 font-bold sm:font-extrabold rounded-full"
+        id="openApplyMenu">
+        Apply Now
+      </button>
+
+      </div>
+    </div>
+        <!-- pop up menu -->
+     
+
+    <!-- about section -->
+    <div class="text-center px-7 md:px-28 my-[160px] space-y-7">
+      <p class="color-primary text-4xl font-extrabold">About</p>
+      <p>
+        <%=coursedata.courseAbout%>
+      </p>
+    </div>
+
+
+
+    <!-- Courses Highlights section -->
+
+   <%-include('coursepartials/highlights')-%>
+
+   <!-- companies banner -->
+   <%-include('../partials/companies-banner')-%>
+
+    <!-- footer -->
+   
+<%-include('../partials/footer')-%>
+<%-include('coursepartials/applicationform')-%>
+  
+    <!-- Tailwind CSS script-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
+    <script> 
+      var message = '<%=username%>';
+      document.getElementById("openApplyMenu").addEventListener("click", function () {
+        if(message=='')
+        {
+          swal({  
+                      title: " Oops!",  
+                      text: "You Need To Login First",   
+                    }); 
+        }
+        else
+        {
+        document.getElementById("applyMenu").style.display = "block";
+        var struct = document.getElementById('struct')
+        struct.style.opacity='0.2'
+        struct.style.pointerEvents='none'
+        }
+      });
+
+      document
+        .getElementById("closeApplyMenu")
+        .addEventListener("click", function () {
+          document.getElementById("applyMenu").style.display = "none";
+          var struct = document.getElementById('struct')
+          struct.style.opacity='1'
+        struct.style.pointerEvents='auto'
+        });
+
+      </script>
+</body>
+
+</html>

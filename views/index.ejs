@@ -1,0 +1,527 @@
+<%-include('partials/header')-%>
+<style>
+  .courses-interns-cards img {
+    width: 150px;
+    height: 150px;
+  }
+
+  @media (min-width: 1025px) and (max-width: 1280px){
+            .home-card{
+    height: 240px;
+    width: 261px;
+  }
+        }
+
+
+         /* companies bannner */
+  logo-slider {
+  --image-size: 100px;
+  padding: 20px;
+  overflow: hidden;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+}
+logo-slider div {
+  display: flex;
+  position: relative;
+  animation: marquee 15s linear infinite;
+  justify-content: space-around;
+}
+logo-slider img {
+  display: block;
+  min-width: var(--image-size);
+  height: var(--image-size);
+  margin: 0 1vw;
+}
+logo-slider:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: linear-gradient(to right, white, rgba(255, 255, 255, 0) 80px, rgba(255, 255, 255, 0) calc(100% - 80px), white);
+}
+@media (max-width: 900px) {
+  logo-slider {
+    --image-size: 50px;
+    --image-size: min(max(50px, 10vw), 100px);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+  
+</style>
+
+<link rel="stylesheets" href="../assets/style.css" />
+<section class="bg-header w-full" >
+  <div class="hidden h-[60vh] justify-between px-10 py-14 md:flex lg:h-[70vh]" >
+    <div class="flex flex-col justify-center items-center gap-14 mt-20" data-aos="fade-right">
+      <div class="space-y-10 ml-20">
+        <p
+          class="color-primary font-extrabold text-2xl md:text-4xl lg:text-5xl"
+        >
+          Give the Best Start to Your Career
+        </p>
+        <p class="color-primary font-bold text-lg md:text-xl lg:text-2xl">
+          Learn, Grow and get Internship!
+        </p>
+        <div class="flex justify-evenly md:justify-center gap-8 lg:justify-start">
+          <button
+            class="bg-dark text-white rounded-full py-2 px-5 text-xl w-fit font-bold shadow hover:shadow-2xl sm:text-2xl sm:px-7 sm:py-3"
+          >
+            <a href="#training"> Training </a>
+          </button>
+          <a href="#intern">
+            <button
+              class="color-primary bg-white rounded-full py-2 px-5 text-xl w-fit font-bold shadow hover:shadow-2xl sm:text-2xl sm:px-7 sm:py-3"
+            >
+              Internship
+            </button>
+          </a>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center items-center mr-12 mt-5" data-aos="fade-left">
+      <img
+        src="./public/images/educationamico.svg"
+        alt="hero-image"
+        class="h-64 md:h-72 lg:80"
+      />
+    </div>
+  </div>
+  <!--MObile view-->
+  <div class="p-2 justify-center flex flex-col text-center gap-10 md:hidden" >
+    <div data-aos="fade-up">
+      <p class="color-primary font-extrabold text-2xl sm:text-3xl">
+        Give the Best Start to Your Career
+      </p>
+      <p class="color-primary font-bold sm:text-lg">
+        Learn, Grow and get Hired!
+      </p>
+    </div>
+    <img
+      src="./public/images/educationamico.svg"
+      alt="hero-image"
+      class="h-52"
+     data-aos="fade-up"/>
+    <div class="flex flex-col items-center gap-5 sm:flex-row sm:justify-evenly" data-aos="fade-up">
+      <button
+        class="bg-dark text-white rounded-full w-[150px] py-2 px-5 text-xl font-bold shadow hover:shadow-2xl sm:text-2xl sm:px-7 sm:py-3"
+      >
+        <a href="#training"> Training </a>
+      </button>
+      <button
+        class="color-primary bg-white rounded-full w-[150px] py-2 px-5 text-xl font-bold shadow hover:shadow-2xl sm:text-2xl sm:px-7 sm:py-3"
+      >
+        <a href="#intern"> Internship </a>
+      </button>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- comapanies bannner -->
+
+<section class="flex overflow-x-hidden items-center border p-10 my-[86.97px] sm:py-5 lg:px-24">
+  <div>
+    <p class="max-w-xs color-primary text-xl">Accomplished Educators from Leading Enterprises:</p>
+  </div>
+  <div>
+    <logo-slider>
+  
+      <div>
+        <div class="slide flex items-center">
+          <img src="../public/images/terapixel-logo.svg" class="h-16" alt="" />
+        </div>
+            
+            <div class="slide flex items-center">
+              <img src="../public/images/capegemini-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/microsoft-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/amazon-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/hcl-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/xebia-logo.jpg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/wipro-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/infosys-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/tcs-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/adani-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/natwest-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/uber-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/mindtree-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/zestbrains-logo.jpg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/fb-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/zing-logo.jpg" class="h-16" alt="" />
+            </div>
+            
+       </div>
+      
+      <div>
+        <div class="slide flex items-center">
+          <img src="../public/images/terapixel-logo.svg" class="h-16" alt="" />
+        </div>
+            
+            <div class="slide flex items-center">
+              <img src="../public/images/capegemini-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/microsoft-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/amazon-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/hcl-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/xebia-logo.jpg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/wipro-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/infosys-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/tcs-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/adani-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/natwest-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/uber-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/mindtree-logo.png" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/zestbrains-logo.jpg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/fb-logo.svg" class="h-16" alt="" />
+            </div>
+            <div class="slide flex items-center">
+              <img src="../public/images/zing-logo.jpg" class="h-16" alt="" />
+            </div>
+            
+      </div>
+       
+    </logo-slider>
+  </div>
+</section>
+
+
+
+<!-- ........................... training section .............................. -->
+
+<section id="training" class="my-16 px-10" >
+      <p class="text-center text-4xl font-bold color-primary uppercase">
+        TRAINING
+      </p>
+
+      <!-- cards container -->
+      <div
+        class="w-full flex flex-wrap justify-center items-center gap-10 my-10"
+      >
+        <!-- ......cards start below -->
+        <div
+          class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+         data-aos="fade-up">
+          <a href="/course/uiux" class="flex flex-col gap-3">
+            <img
+              class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+              src="./public/images/ui-ux.png"
+              alt="ui/ux image"
+            />
+            <p class="text-center font-bold text-xl">UI/UX</p>
+          </a>
+        </div>
+
+
+        <div
+          class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+          data-aos="fade-up">
+          <a href="/course/frontend" class="flex flex-col gap-3">
+            <img
+              class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+              src="./public/images/frontendDev.png"
+              alt="frontend image"
+            />
+            <p class="text-center font-bold text-xl">
+              Frontend Development
+            </p>
+          </a>
+        </div>
+
+        <div
+          class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+          data-aos="fade-up">
+          <a href="/course/backend" class="flex flex-col gap-3">
+            <img
+              class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+              src="./public/images/backendDev.png"
+              alt="backend image"
+            />
+            <p class="text-center font-bold text-xl">
+              Backend Development
+            </p>
+          </a>
+        </div>
+
+        <div
+          class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+          data-aos="fade-up">
+          <a href="/course/flutter" class="flex flex-col gap-3">
+            <img
+              class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+              src="./public/images/flutterDev.png"
+              alt="flutter image"
+            />
+            <p class="text-center font-bold text-xl">
+              Flutter Development
+            </p>
+          </a>
+        </div>
+
+        <div
+          class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+          data-aos="fade-up">
+          <a href="/course/angular" class="flex flex-col gap-3">
+            <img
+              class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+              src="./public/images/angularJS.png"
+              alt="angular image"
+            />
+            <p class="text-center font-bold text-xl">Angular JS</p>
+          </a>
+        </div>
+
+        <div
+          class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+          data-aos="fade-up" >
+          <a href="/course/react" class="flex flex-col gap-3">
+            <img
+              class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+              src="./public/images/reactJS.png"
+              alt="react js image"
+            />
+            <p class="text-center font-bold text-xl">React JS</p>
+          </a>
+        </div>
+
+        <div
+          class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+          data-aos="fade-up">
+          <a href="/course/cloud" class="flex flex-col gap-3">
+            <img
+              class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+              src="./public/images/googleCloud.png"
+              alt="google cloud image"
+            />
+            <p class="text-center font-bold text-xl">Google Cloud</p>
+          </a>
+        </div>
+
+        <div
+          class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+          data-aos="fade-up" >
+          <a href="/course/dsa" class="flex flex-col gap-3">
+            <img
+              class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px] lg:mx-auto"
+              src="./public/images/dsa.png"
+              alt="dsa image"
+            />
+            <p class="text-center font-bold text-xl">
+              C/C++ & Data Structure
+            </p>
+          </a>
+        </div>
+        <!-- .............card container ends here........................ -->
+      </div>
+    </section>
+
+<!-- mid banner section -->
+<div
+  class="text-center color-primary bg-light flex mt-36 mb-24 justify-center items-center flex-col p-10 md:flex-row md:justify-evenly md:px-5"
+>
+  <div class="-mt-32">
+    <img src="./public/images/boy.png" alt="boy image" class="h-44 sm:h-52" />
+  </div>
+  <div class="flex flex-col gap-5">
+    <p class="font-extrabold text-xl sm:text-2xl">
+      Training your way to success and <br />
+      Apply to jobs with confidence
+    </p>
+    <p class="font-bold text-lg sm:text-xl">Learn, Grow and get Hired!</p>
+  </div>
+</div>
+
+<!-- Internship section -->
+
+<section id="intern" class="my-16 px-10">
+  <p class="text-center text-4xl font-bold color-primary uppercase">
+    INTERNSHIP
+  </p>
+
+  <!-- cards container -->
+  <div
+    class="w-full flex flex-wrap justify-center items-center gap-10 my-10"
+  >
+    <!-- ......cards start below -->
+
+    <div
+      class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+      data-aos="fade-up" >
+      <a href="/internship/frontendintern" class="flex flex-col gap-3">
+        <img
+          class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+          src="./public/images/frontendDev.png"
+          alt="frontend image"
+        />
+        <p class="text-center font-bold text-xl mt-3">Frontend Development</p>
+      </a>
+    </div>
+
+    <div
+      class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+      data-aos="fade-up" >
+      <a href="/internship/backendintern" class="flex flex-col gap-3">
+        <img
+          class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+          src="./public/images/backendDev.png"
+          alt="backend image"
+        />
+        <p class="text-center font-bold text-xl mt-3">Backend Development</p>
+      </a>
+    </div>
+
+    <div
+      class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+      data-aos="fade-up">
+      <a href="/internship/flutterintern" class="flex flex-col gap-3">
+        <img
+          class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+          src="./public/images/flutterDev.png"
+          alt="flutter image"
+        />
+        <p class="text-center font-bold text-xl mt-3">Flutter Development</p>
+      </a>
+    </div>
+
+    <div
+      class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+      data-aos="fade-up">
+      <a href="/internship/cintern" class="flex flex-col gap-3">
+        <img
+          class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+          src="../public/images/c_programming_image-removebg-preview.png"
+          alt="C/C++ image"
+        />
+        <p class="text-center font-bold text-xl mt-3">Programming in C/C++</p>
+      </a>
+    </div>
+
+    <div
+      class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+      data-aos="fade-up">
+      <a href="/internship/pythonintern" class="flex flex-col gap-3">
+        <img
+          class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+          src="../public/images/pythonimage-removebg-preview.png"
+          alt="python image"
+        />
+        <p class="text-center font-bold text-xl mt-3">Python Development</p>
+      </a>
+    </div>
+
+    <div
+      class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+      data-aos="fade-up">
+      <a href="/internship/reactintern" class="flex flex-col gap-3">
+        <img
+          class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+          src="./public/images/reactJS.png"
+          alt="react js image"
+        />
+        <p class="text-center font-bold text-xl mt-3">React JS Development</p>
+      </a>
+    </div>
+
+    <div
+      class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+      data-aos="fade-up">
+      <a href="/internship/sqlintern" class="flex flex-col gap-3">
+        <img
+          class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+          src="../public/images/dbmsimage-removebg-preview.png"
+          alt="database image"
+        />
+        <p class="text-center font-bold text-xl mt-3">Database Development</p>
+      </a>
+    </div>
+
+    <div
+      class="shadow-2xl p-3 rounded-xl w-[75vw] sm:w-[50vw] md:w-[20rem] lg:w-[260px] lg:h-[240px]"
+      data-aos="fade-up">
+      <a href="/internship/uiuxintern" class="flex flex-col gap-3">
+        <img
+          class="bg-light h-52 w-full rounded-xl lg:w-[235px] lg:h-[150px]"
+          src="./public/images/ui-ux.png"
+          alt="ui/ux image"
+        />
+        <p class="text-center font-bold text-xl mt-3">UI/UX Development</p>
+      </a>
+    </div>
+    <!-- .............card container ends here........................ -->
+  </div>
+</section>
+
+
+
+<%-include('partials/footer')-%>
+
+<!-- lower banner section -->

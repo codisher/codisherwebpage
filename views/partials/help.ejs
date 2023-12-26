@@ -1,0 +1,123 @@
+<style>
+    .helppopup
+      {
+          box-sizing: border-box;
+          position:absolute;
+          height: 600px;
+          top: 100px;
+          left: 12%;
+          right: 10%;
+          background: #FFFFFF;
+          display: none;
+          border: 1.26643px solid rgba(112, 112, 112, 0.6);
+          border-radius: 8.44284px;
+          z-index: 99;
+          padding: 15px;
+          text-align: justify;
+          font-family: 'Lato';
+          justify-self: center;
+      }
+      .helppopup h3
+      {   
+           font-size: 20px;
+           margin-bottom: 5px;
+           font-weight: bold;
+      }
+      .helppopup p{
+         font-size: 15px;
+      }
+      .line
+      {
+        height: 2px;
+        background-color: black;
+        min-width: 323px;
+      }
+      .popupnav
+      {
+        position: sticky;
+      }
+      .help-content
+      {
+        overflow:auto;
+        height: 525px ;
+        padding-right: 10px;
+        
+      }
+      ::-webkit-scrollbar {
+        display: none;
+         }
+         @media screen and (max-width: 480px) {
+         .helppopup
+         {
+            left: 5px;
+            margin: 0 auto;
+            right:5px;
+            justify-self: center;
+            width: 350px;
+            height: 600px;
+         }
+    }
+    </style>
+
+
+
+
+<div class="helppopup w-fit lg:w-[1000px] " id="helppopup">
+    <div class="flex lg:space-x-[85%] mb-[10px] popupnav space-x-[65%]">
+    <h1 class="text-3xl font-extrabold">Help</h1>
+    <h1 id="closehelppopup" class="cursor-pointer text-3xl font-extrabold">X</h1>
+  </div>
+     <div class="line mb-[10px]"></div>
+    <div class="help-content">
+      <h1>What is Thinkwht?</h1>
+      <p>This is a place where you can do anything from anywhere at any time. We believe each and every student 
+          is unique. Every Student deserves a chance to explore different domains of live learning. Via us practically 
+          learn and explore various domains of knowledge from Designing to coding, from Development to creative 
+          Designing, all under one shelter. The primary objective is to bring this to you on your doorstep and 
+          acknowledge the future of virtual learning. Out of everything, the most important thing is that the classes 
+          provided here are live interactive & practical sessions that will help learners lifelong.</p>
+           <br></br>
+           <h2>How to Login on Thinkwht? </h2>
+           <p>It is very easy to join us at thinkwht. Log in to our platform (link of thinkwht) and try any of our 
+              interesting courses just by the click of a button to Apply now the session for the course. Also, we would 
+              like to inform you that our live sessions are completely easy to attend through our website.</p>
+              <br></br>
+              <h3>How to change password on Thinkwht?</h3>
+              <p>There is a possibility that you would have forgotten/misplaced your password to log in. We have simple 
+                  steps to help you create a new password and resume learning. The steps to do so are simple. </p>
+              <br></br>
+              <h4>How to book a course?</h4>
+              <p>Go on to our website www.Thinkwh?t.com, Once you've found a course you want to take, register for it 
+                  online by clicking on the "Apply now" button.</p>
+                  <br></br>
+                  <h5>How can a Student Signup on Thinkwht?</h5>
+                  <p>Navigate to the website's homepage. Look for a "Sign Up" or "Register" button on the website. This is 
+                      usually located at the top of the page or in the website's header or footer. Click on the "Sign Up" or "Register" 
+                      button. This should take you to a page where you can create a new account. Fill in the required information 
+                      on the sign-up form. This typically includes your name, email address, and a password.</p>
+    </div>
+  
+  </div> 
+
+
+
+  <script>
+    const helppopup = document.getElementById('helppopup')
+    document.getElementById('closehelppopup').addEventListener('click',closepopup)
+    function closepopup()
+    {
+
+        helppopup.style.display='none'
+        document.getElementById('struct').style.opacity='1'
+    }  
+     //open popuop
+    document.getElementById('openhelppopup').addEventListener('click',openpopup)
+    document.getElementById('openmobhelp').addEventListener('click',openpopup)
+    function openpopup()
+    {
+        helppopup.style.display='block'
+        helppopup.style.opacity='1'
+        var struct=document.getElementById('struct');
+        struct.style.opacity='0.2'
+    }        
+</script>

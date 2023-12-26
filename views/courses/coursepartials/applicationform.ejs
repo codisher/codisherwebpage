@@ -1,0 +1,32 @@
+<form method="post">
+    <div class=" absolute hidden  w-full lg:w-full top-40 " id="applyMenu">
+      <div
+        class="bg-white  py-5  lg:px-12 rounded-lg mx-auto w-[360px] lg:w-fit shadow-lg hover:shadow-2xl space-y-8">
+        <p class="text-right mx-5 text-3xl cursor-pointer" id="closeApplyMenu" >
+          X
+        </p>
+        <p class="text-2xl text-center font-extrabold">Application Form</p>
+        <div class="flex flex-col">
+          <label for="number" class="mx-2">Name</label>
+          <input type="name" name="name" id="mobile" required
+            class="border-2 border-gray-300 rounded-lg p-2 mx-2 md:w-[24rem]" />
+        </div>
+        <div class="flex flex-col">
+          <label for="number" class="mx-2">Mobile Number</label>
+          <input type="tel" name="mobile" id="mobile" required
+            class="border-2 border-gray-300 rounded-lg p-2 mx-2 md:w-[24rem]" />
+        </div>
+        <div class="flex flex-col">
+          <label for="number" class="mx-2">College/University </label>
+          <input type="text" name="college" id="mobile" required
+            class="border-2 border-gray-300 rounded-lg p-2 mx-2 md:w-[24rem]" />
+        </div>
+         <input type="hidden" name="email" value="<%=usermail%>">
+         <input type="hidden" name="course" value="<%=coursedata.name%>">
+         <input type="hidden" name="courseID" value="<%=coursedata.courseID%>">
+        <button class=" bg-dark text-white text-center md:w-full w-[250px] md:mx-0 mx-10 py-3 rounded-full">
+          Apply  Now
+        </button>
+      </div>
+    </div>
+  </form>

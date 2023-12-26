@@ -1,0 +1,167 @@
+<style>
+  /* companies bannner */
+  logo-slider {
+    --image-size: 100px;
+    padding: 20px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+  }
+  logo-slider div {
+    display: flex;
+    position: relative;
+    animation: marquee 15s linear infinite;
+    justify-content: space-around;
+  }
+  logo-slider img {
+    display: block;
+    min-width: var(--image-size);
+    height: var(--image-size);
+    margin: 0 1vw;
+  }
+  logo-slider:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: linear-gradient(
+      to right,
+      white,
+      rgba(255, 255, 255, 0) 80px,
+      rgba(255, 255, 255, 0) calc(100% - 80px),
+      white
+    );
+  }
+  @media (max-width: 900px) {
+    logo-slider {
+      --image-size: 50px;
+      --image-size: min(max(50px, 10vw), 100px);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
+
+
+<div
+    class="text-center color-primary bg-light flex mt-36 justify-center items-center flex-col p-10 md:flex-row md:justify-evenly md:px-5"
+  >
+    <p class="text-3xl font-bold">Accomplished Educators from Leading Enterprises</p>
+  </div>
+
+<logo-slider>
+  <div class="my-10">
+    <div class="slide flex items-center">
+      <img src="../public/images/terapixel-logo.svg" class="h-16" alt="" />
+    </div>
+
+    <div class="slide flex items-center">
+      <img src="../public/images/capegemini-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/microsoft-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/amazon-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/hcl-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/xebia-logo.jpg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/wipro-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/infosys-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/tcs-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/adani-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/natwest-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/uber-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/mindtree-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/zestbrains-logo.jpg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/fb-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/zing-logo.jpg" class="h-16" alt="" />
+    </div>
+  </div>
+
+  <div>
+    <div class="slide flex items-center">
+      <img src="../public/images/terapixel-logo.svg" class="h-16" alt="" />
+    </div>
+
+    <div class="slide flex items-center">
+      <img src="../public/images/capegemini-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/microsoft-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/amazon-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/hcl-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/xebia-logo.jpg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/wipro-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/infosys-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/tcs-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/adani-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/natwest-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/uber-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/mindtree-logo.png" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/zestbrains-logo.jpg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/fb-logo.svg" class="h-16" alt="" />
+    </div>
+    <div class="slide flex items-center">
+      <img src="../public/images/zing-logo.jpg" class="h-16" alt="" />
+    </div>
+  </div>
+</logo-slider>

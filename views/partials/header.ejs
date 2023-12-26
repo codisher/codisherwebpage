@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google-site-verification" content="DBVzQPoTNg0ymjqseZQPtgUjRI53Zy93iLjQM0a-sM4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="THINKWH?T" />
+<meta property="og:description" content="A Next Step of Learning" />
+<meta property="og:url" content="https://thinkwht.com/" />
+<meta property="og:image" content="https://thinkwht.com/public/images/twnewlogo2.png" />
+
+    <title>ThinkWh?t</title>
+    <link rel="icon" type="image/x-icon" href="./public/images/twfavicon.jpg">
+    <link rel="stylesheet" href="../assets/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+   
+    <div id="struct">
+      
+      <nav class="shadow-sm px-2  bg-light top-0 lg:py-2 " id="head">
+        <!-- for large screens -->
+        <div
+          class="hidden md:flex justify-between items-center lg:justify-evenly"
+        >
+          <a href="/">
+          <img src="../public/images/codisher_log.png" alt="logo image" class="h-[120px] w-[120px] mb-[10px]"  />
+        </a>
+          <div
+            class="flex border bg-white py-2 px-3 gap-2 rounded-full items-center lg:py-3 lg:px-5"
+          >
+            <img src="../public/images/searchButton.png" class="h-5" />
+            <input
+              type="text"
+              placeholder="Search"
+              class="border-none focus:outline-none bg-transparent w-20 lg:w-52"
+              onchange="search()"
+              id="search"
+            />
+          </div>
+
+          <div>
+            <ul class="flex text-lg gap-3 items-center lg:gap-10 lg:text-xl ">
+              <a href="/" class="group hover:font-bold">
+                <li>Home</li>
+                <div
+                  class="hidden bg-dark h-1 w-1 mx-auto rounded-full animate-bounce group-hover:flex"
+                ></div>
+              </a>
+              <a href="/about" class="group hover:font-bold">
+                <li>About</li>
+                <div
+                  class="hidden bg-dark h-1 w-1 mx-auto rounded-full animate-bounce group-hover:flex"
+                ></div>
+              </a>
+              <a href="/contact" class="group hover:font-bold">
+                <li>Contact</li>
+                <div
+                  class="hidden bg-dark h-1 w-1 mx-auto rounded-full animate-bounce group-hover:flex"
+                ></div>
+              </a>
+              <a href="/our-educators" class="group hover:font-bold cursor-pointer" id="oureducators">
+                <li>Our Educators</li>
+                <div
+                  class="hidden bg-dark h-1 w-1 mx-auto rounded-full animate-bounce group-hover:flex"
+                ></div>
+              </a>
+            </ul>
+          </div>
+         
+          
+          <% if ( username == undefined) { %>
+            <div class="gap-3 flex lg:gap-10 ">
+              <div>
+                <a href="/login">
+                  <button
+                    class="color-primary bg-white py-3 px-3 mx-5 xl:w-[150px] md:w-[100px] rounded-full items-center space-x-3 text-lg  group hover:font-bold"
+                  >
+                    Login
+                  </button>
+                </a>
+              </div>
+  
+              <div>
+                <a href="/signup">
+                  <button
+                    class="bg-dark text-white py-3 px-3 mx-5 xl:w-[150px] md:w-[100px] rounded-full items-center space-x-3 text-lg   group hover:font-bold"
+                  >
+                    Sign Up
+                  </button>
+                </a>
+              </div>
+            </div>
+            <%} else { %>
+            <div class="p-2" id="logoutsection">
+            <div class="flex-col flex" >
+              <div class = "flex gap-2 items-center">
+              <p class="text-2xl color-yellow font-bold"><%=username%></p> 
+              <img src="../public/images/dropdown-yellow.png"
+              class="cursor-pointer h-5"
+              id="logoutbuttonopen"
+              onclick="addShadow()" />
+              <img src="../public/images/dropdown-yellow.png"
+              class="cursor-pointer h-5 rotate-180 hidden"
+              id="logoutbuttonclose"
+              onclick="removeShadow()"
+            />
+            </div>
+              <div id="logoutbutton" class="hidden">
+                <a href="/logout">
+                <button class="w-36 h-10 rounded-lg color-yellow text-lg text-left font-bold">Log Out</button>
+              </a>
+              </div>
+            </div>
+           </div>
+            
+            <% } %>
+        </div>
+
+        <!-- mob nav -->
+        <nav class="navbar md:hidden">
+        <div class="flex justify-between  items-center md:hidden">
+          <div class="flex gap-5 items-center">
+            <div>
+              <a href="/">
+              <img src="../public/images/twnewlogo2.png" alt="logo image" class="h-20 w-20" />
+            </a>
+            </div>
+
+            <div
+              class="flex border bg-white py-2 px-3 gap-2 rounded-full items-center h-fit"
+            >
+              <img src="../public/images/searchButton.png" class="h-5" />
+              <input
+                type="text"
+                placeholder="Search"
+                class="border-none focus:outline-none bg-transparent w-20 sm:w-40"
+                onchange="searchMob()"
+                  id="searchMob"
+              />
+            </div>
+          </div>
+
+          <!-- hamburger -->
+          <div onclick="this.classList.toggle('active')" class="burger">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="70"
+              height="70"
+              viewBox="0 0 200 200"
+              class="cursor-pointer"
+            >
+              <g stroke-width="6.5" stroke-linecap="round">
+                <path
+                  d="M72 82.286h28.75"
+                  fill="#009100"
+                  fill-rule="evenodd"
+                  stroke="rgb(39, 84, 115)"
+                />
+                <path
+                  d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
+                  fill="none"
+                  stroke="rgb(39, 84, 115)"
+                />
+                <path
+                  d="M72 125.143h28.75"
+                  fill="#009100"
+                  fill-rule="evenodd"
+                  stroke="rgb(39, 84, 115)"
+                />
+                <path
+                  d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
+                  fill="none"
+                  stroke="rgb(39, 84, 115)"
+                />
+                <path
+                  d="M100.75 82.286h28.75"
+                  fill="#009100"
+                  fill-rule="evenodd"
+                  stroke="rgb(39, 84, 115)"
+                />
+                <path
+                  d="M100.75 125.143h28.75"
+                  fill="#009100"
+                  fill-rule="evenodd"
+                  stroke="rgb(39, 84, 115)"
+                />
+              </g>
+            </svg>
+          </div>
+
+          <!-- insert mob menu below -->
+        </div>
+        <div class="nav-list op  flex flex-col justify-center text-center items-center">
+          
+            <ul class="opn text-lg  font-bold space-y-5 gap-5">
+                <a href="/" class="group hover:font-bold">
+                  <li>Home</li>
+                  <div
+                    class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
+                  ></div>
+                </a>
+                <a href="/about" class="group hover:font-bold">
+                  <li>About</li>
+                  <div
+                    class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
+                  ></div>
+                </a>
+                <a href="/contact" class="group hover:font-bold">
+                  <li>Contact</li>
+                  <div
+                    class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
+                  ></div>
+                </a>
+                <a href="/our-educators" class="group hover:font-bold cursor-pointer">
+                  <li>Our Educators</li>
+                  <div
+                    class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
+                  ></div>
+                </a>
+                  <% if (username==undefined) { %>
+                    <a href="/login" class="group hover:font-bold">
+                      <li>Login</li>
+                      <div
+                        class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
+                      ></div>
+                    </a>
+                    <a href="/signup" class="group hover:font-bold">
+                      <li>Sign Up</li>
+                      <div
+                        class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
+                      ></div>
+                    </a>
+                    <%} else
+                     { %>
+                      <li>
+                        <div class=" mx-auto" id="moblogoutsection">
+                          <div class="flex-col flex" >
+                            <div class = "flex gap-2 items-center">
+                            <p class="text-2xl color-yellow font-bold"><%=username%></p> 
+                            <img src="../public/images/dropdown-yellow.png"
+                            class="cursor-pointer h-5"
+                            id="moblogoutbuttonopen" />
+                            <img src="../public/images/dropdown-yellow.png"
+                            class="hidden cursor-pointer rotate-180 h-5"
+                            id="moblogoutbuttonclose" />
+                          </div>
+                            <div id="moblogoutbutton" class="hidden">
+                              <a href="/logout">
+                              <button class="w-36 h-10 rounded-lg color-yellow text-lg text-left font-bold">Log Out</button>
+                            </a>
+                            </div>
+                          </div>
+                         </div>
+                        
+                      </li>
+                    <% } %>
+              </ul>
+        </div>
+        </nav>
+      </nav>
+
+      <!-- hero section -->
+
+      <!-- for large screens-->
+      
+ 
+    <script>
+
+const addShadow = () => {
+          document.getElementById("logoutsection").classList.add("shadow");
+        };
+        const removeShadow = () => {
+          document.getElementById("logoutsection").classList.remove("shadow");
+        };
+
+        // search functionality
+        const search = () => {
+          let filter = document.getElementById("search").value.toUpperCase();
+
+          switch (filter) {
+            case "UI/UX":
+              window.location.href = "/course/uiux";
+              break;
+            case "UI":
+              window.location.href = "/course/uiux";
+              break;
+            case "UX":
+              window.location.href = "/course/uiux";
+              break;
+            case "WEB DEVELOPMENT":
+              window.location.href = "/course/frontend";
+              break;
+            case "WEB DEV":
+              window.location.href = "/course/frontend";
+              break;
+            case "WEBDEV":
+              window.location.href = "/course/frontend";
+              break;
+            case "FRONTEND DEVELOPMENT":
+              window.location.href = "/course/frontend";
+              break;
+            case "FRONTEND":
+              window.location.href = "/course/frontend";
+              break;
+            case "FRONT END":
+              window.location.href = "/course/frontend";
+              break;
+            case "BACKEND END":
+              window.location.href = "/course/backend";
+              break;
+            case "BACKEND DEVELOPMENT":
+              window.location.href = "/course/backend";
+              break;
+            case "BACKEND DEV":
+              window.location.href = "/course/backend";
+              break;
+            case "BACKEND":
+              window.location.href = "/course/backend";
+              break;
+            case "APP DEVELOPMENT":
+              window.location.href = "/course/flutter";
+              break;
+            case "FLUTTER DEVELOPMENT":
+              window.location.href = "/course/flutter";
+              break;
+            case "FLUTTER":
+              window.location.href = "/course/flutter";
+              break;
+            case "FLUTTER DEV":
+              window.location.href = "/course/flutter";
+              break;
+            case "DSA":
+              window.location.href = "/course/dsa";
+              break;
+            case "DATA STRUCTURES AND ALGORITHMS":
+              window.location.href = "/course/dsa";
+              break;
+            case "DATA STRUCTURES":
+              window.location.href = "/course/dsa";
+              break;
+            case "ALGORITHMS":
+              window.location.href = "/course/dsa";
+              break;
+            case "CLOUD COMPUTING":
+              window.location.href = "/course/cloud";
+              break;
+            case "CLOUD":
+              window.location.href = "/course/cloud";
+              break;
+            case "GOOGLE CLOUD":
+              window.location.href = "/course/cloud";
+              break;
+            case "ANGULAR":
+              window.location.href = "/course/angular";
+              break;
+            case "ANGULAR DEVELOPMENT":
+              window.location.href = "/course/angular";
+              break;
+            case "ANGULAR DEV":
+              window.location.href = "/course/angular";
+              break;
+            case "ANGULAR JS":
+              window.location.href = "/course/angular";
+              break;
+            case "REACT":
+              window.location.href = "/course/react";
+              break;
+            case "REACT DEVELOPMENT":
+              window.location.href = "/course/react";
+              break;
+            case "REACT DEV":
+              window.location.href = "/course/react";
+              break;
+            case "REACT JS":
+              window.location.href = "/course/react";
+              break;
+            case "REACTJS":
+              window.location.href = "/course/react";
+              break;
+            default:
+              alert(
+                "not found, try anything like UI/UX, frontend development, etc"
+              );
+          }
+        };
+
+        const searchMob = () => {
+          let filterMob = document
+            .getElementById("searchMob")
+            .value.toUpperCase();
+
+          switch (filterMob) {
+            case "UI/UX":
+              window.location.href = "/course/uiux";
+              break;
+            case "UI":
+              window.location.href = "/course/uiux";
+              break;
+            case "UX":
+              window.location.href = "/course/uiux";
+              break;
+            case "WEB DEVELOPMENT":
+              window.location.href = "/course/frontend";
+              break;
+            case "WEB DEV":
+              window.location.href = "/course/frontend";
+              break;
+            case "WEBDEV":
+              window.location.href = "/course/frontend";
+              break;
+            case "FRONTEND DEVELOPMENT":
+              window.location.href = "/course/frontend";
+              break;
+            case "FRONTEND":
+              window.location.href = "/course/frontend";
+              break;
+            case "FRONT END":
+              window.location.href = "/course/frontend";
+              break;
+            case "BACKEND END":
+              window.location.href = "/course/backend";
+              break;
+            case "BACKEND DEVELOPMENT":
+              window.location.href = "/course/backend";
+              break;
+            case "BACKEND DEV":
+              window.location.href = "/course/backend";
+              break;
+            case "BACKEND":
+              window.location.href = "/course/backend";
+              break;
+            case "APP DEVELOPMENT":
+              window.location.href = "/course/flutter";
+              break;
+            case "FLUTTER DEVELOPMENT":
+              window.location.href = "/course/flutter";
+              break;
+            case "FLUTTER":
+              window.location.href = "/course/flutter";
+              break;
+            case "FLUTTER DEV":
+              window.location.href = "/course/flutter";
+              break;
+            case "DSA":
+              window.location.href = "/course/dsa";
+              break;
+            case "DATA STRUCTURES AND ALGORITHMS":
+              window.location.href = "/course/dsa";
+              break;
+            case "DATA STRUCTURES":
+              window.location.href = "/course/dsa";
+              break;
+            case "ALGORITHMS":
+              window.location.href = "/course/dsa";
+              break;
+            case "CLOUD COMPUTING":
+              window.location.href = "/course/cloud";
+              break;
+            case "CLOUD":
+              window.location.href = "/course/cloud";
+              break;
+            case "GOOGLE CLOUD":
+              window.location.href = "/course/cloud";
+              break;
+            case "ANGULAR":
+              window.location.href = "/course/angular";
+              break;
+            case "ANGULAR DEVELOPMENT":
+              window.location.href = "/course/angular";
+              break;
+            case "ANGULAR DEV":
+              window.location.href = "/course/angular";
+              break;
+            case "ANGULAR JS":
+              window.location.href = "/course/angular";
+              break;
+            case "REACT":
+              window.location.href = "/course/react";
+              break;
+            case "REACT DEVELOPMENT":
+              window.location.href = "/course/react";
+              break;
+            case "REACT DEV":
+              window.location.href = "/course/react";
+              break;
+            case "REACT JS":
+              window.location.href = "/course/react";
+              break;
+            case "REACTJS":
+              window.location.href = "/course/react";
+              break;
+            default:
+              alert(
+                "not found, try anything like UI/UX, frontend development, etc"
+              );
+          }
+        };
+
+
+
+
+
+      const burger = document.querySelector('.burger')
+         const navbar= document.querySelector('.navbar')
+         const opn = document.querySelector('.opn')
+         burger.addEventListener('click',()=>
+         {
+           navbar.classList.toggle('v-class')
+           opn.classList.toggle('h-nav')
+         })
+  const username = '<%=username%>'
+  if(username !== '')
+  {
+
+  
+         const logoutsection = document.getElementById('logoutsection')
+         const logoutbutton = document.getElementById('logoutbutton')
+         document.getElementById('logoutbuttonopen').addEventListener('click',()=>
+         {
+             logoutbutton.style.display='block'  
+             document.getElementById('logoutbuttonclose').style.display='block'
+             document.getElementById('logoutbuttonopen').style.display='none'
+             logoutsection.style.marginTop='50px'
+               
+         })
+         document.getElementById('logoutbuttonclose').addEventListener('click',()=>
+         {
+            logoutbutton.style.display='none'  
+              document.getElementById('logoutbuttonclose').style.display='none'
+             document.getElementById('logoutbuttonopen').style.display='block'
+             logoutsection.style.marginTop='0px'
+             
+             
+         })
+
+         const moblogoutsection = document.getElementById('moblogoutsection')
+         const moblogoutbutton = document.getElementById('moblogoutbutton')
+         document.getElementById('moblogoutbuttonopen').addEventListener('click',()=>
+         {
+             moblogoutbutton.style.display='block'  
+             document.getElementById('moblogoutbuttonclose').style.display='block'
+             document.getElementById('moblogoutbuttonopen').style.display='none'
+             
+               
+         })
+         document.getElementById('moblogoutbuttonclose').addEventListener('click',()=>
+         {
+            moblogoutbutton.style.display='none'  
+              document.getElementById('moblogoutbuttonclose').style.display='none'
+             document.getElementById('moblogoutbuttonopen').style.display='block'
+             
+         })
+
+        }        
+     </script>
+  
+

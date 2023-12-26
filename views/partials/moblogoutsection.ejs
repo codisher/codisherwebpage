@@ -1,0 +1,37 @@
+<li>
+    <div class=" mx-auto" id="moblogoutsection">
+      <div class="flex-col flex" >
+        <div class = "flex flex-row">
+        <p class="text-2xl color-yellow font-bold"><%=username%></p> 
+        <img src="../public/images/icons8-collapse-arrow-24.png" class="rotate-180 cursor-pointer" id="moblogoutbuttonopen">
+        <img src="../public/images/icons8-collapse-arrow-24.png" class=" hidden cursor-pointer" id="moblogoutbuttonclose">
+      </div>
+        <div id="moblogoutbutton" class="hidden">
+          <a href="/logout">
+          <button class="bg-dark w-36 h-10 rounded-lg text-white text-lg mx-auto">Log Out</button>
+        </a>
+        </div>
+      </div>
+     </div>
+    
+  </li>
+
+  <script>
+    const moblogoutsection = document.getElementById('moblogoutsection')
+    const moblogoutbutton = document.getElementById('moblogoutbutton')
+    document.getElementById('moblogoutbuttonopen').addEventListener('click',()=>
+    {
+        moblogoutbutton.style.display='block'  
+        document.getElementById('moblogoutbuttonclose').style.display='block'
+        document.getElementById('moblogoutbuttonopen').style.display='none'
+        
+          
+    })
+    document.getElementById('moblogoutbuttonclose').addEventListener('click',()=>
+    {
+       moblogoutbutton.style.display='none'  
+         document.getElementById('moblogoutbuttonclose').style.display='none'
+        document.getElementById('moblogoutbuttonopen').style.display='block'
+        
+    })
+  </script>

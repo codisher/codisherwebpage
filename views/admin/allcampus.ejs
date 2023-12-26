@@ -1,0 +1,45 @@
+<%-include('../partials/header')-%>
+
+<%-include('adminnav')-%>
+<div class="space-y-7 my-14 lg:space-y-14 mx-2">
+    <p class="font-bold text-center text-secondary text-2xl">All Campus Ambassadors Details</p>
+    <div>
+      <table class="border-separate border-spacing-2 border border-slate-400 w-full ">
+        <thead>
+          <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>College</th>
+          <th>Branch</th>
+          <th>Year</th>
+          <th>Location</th>
+          <th>Date & Time</th>
+          </tr>
+          </thead>
+          <tbody>
+            <%  allcampus.forEach(element => { %>
+              <tr className="w-full">
+                <td class="border border-slate-300"><%=element.campusAmbassadorID%></td>
+                <td class="border border-slate-300"><%=element.name%></td>
+                <td class="border border-slate-300"><%=element.phone%></td>
+                <td class="border border-slate-300"><%=element.email%></td>
+                <td class="border border-slate-300"><%=element.collegeName%></td>
+                <td class="border border-slate-300"><%=element.branch%></td>
+                <td class="border border-slate-300"><%=element.year %></td>
+                <td class="border border-slate-300"><%=element.location%></td>
+                <td class="border border-slate-300"><%=element.date%></td>
+              </tr>
+            
+          <%}) %>
+           
+         
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+<%-include('../partials/footer')-%>

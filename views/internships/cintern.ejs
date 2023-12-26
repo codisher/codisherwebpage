@@ -1,0 +1,201 @@
+<%-include('../partials/header')-%>
+
+    <!-- header section -->
+    <div class="bg-light flex flex-col-reverse items-center px-5 w-full md:px-16 py-14 sm:flex-row">
+      <div class="w-full  sm:space-y-3">
+        <p class="color-primary text-2xl md:text-5xl font-extrabold">Start Your Learning as</p>
+        <p class="color-yellow -mt-1 text-2xl md:text-5xl font-extrabold"><%=coursedata.name%></p>
+        <p class="color-primary mt-2 md:text-lg text-sm">
+         
+        </p>
+      </div>
+      
+      <div class="w-full flex justify-end items-center">
+        <img src="<%=coursedata.courseimage%>" alt="avatar" class="md:h-80" />
+      </div>
+    </div>
+
+
+
+    <!-- course detail summary -->
+   
+
+    <!-- apply bar -->
+    <div class="-mt-12 bg-white shadow-xl w-[62%] mx-auto flex flex-col sm:flex sm:flex-row justify-center items-center space-y-2 sm:space-x-10 sm:space-y-0 p-5
+               rounded-xl mb-24 lg:w-fit lg:px-16 lg:gap-16">
+   <div class="flex w-full sm:px-0 justify-center sm:space-x-56 lg:justify-center lg:space-x-0">
+        <div class="flex items-center space-x-2 pr-5 sm:pr-0">
+         <img src="https://img.icons8.com/android/24/null/clock.png"
+         class="bg-light p-1 rounded h-[30px] w-[30px] sm:h-[50px] sm:w-[50px] sm:p-3 " />
+         <p class="text-xs font-bold sm:text-lg  ">
+          Duration
+           </br>
+           1 Month
+         </p>
+        </div>
+   </div>
+  
+     
+     <button
+     class=" w-[140px]  md:w-[200px]  bg-dark text-white sm:py-4 sm:px-12 sm:mx-10 px-3 py-2 font-bold sm:font-extrabold rounded-full
+             lg:w-full"
+     id="openApplyMenu">
+     Apply Now
+   </button>
+ 
+  </div>
+
+
+        <!-- pop up menu -->
+     
+
+    <!-- about section -->
+    
+    <%-include('internpartials/internmiddle')-%>
+   
+
+    <!-- Courses Highlights section -->
+
+   <!-- learning path -->
+  <div class="mb-24 space-y-14 -mt-14">
+    <p class="color-primary text-4xl font-extrabold text-center mb-10">
+      Learning Path
+    </p>
+    <div class="flex items-center justify-center flex-col md:flex-row gap-10 md:gap-0">
+      <div class="md:space-y-2 flex flex-col items-center">
+        <div
+          class=" border-primary border-[6px] rounded-3xl h-20 w-20 1.2px [transform:_rotate(41.36deg)] flex justify-center items-center">
+          <div class="bg-dark p-3 h-12 w-12 rounded-2xl flex justify-center items-center">
+            <p class="text-xl font-extrabold text-white [transform:_rotate(-41.36deg)]">
+              1
+            </p>
+          </div>
+        </div>
+        <p class="mt-2 " >Beginner</p>
+      </div>
+
+      <p class="-mt-12 hidden md:flex">
+        ....................................................
+      </p>
+      <p style="line-height:0.3;" class="-mt-10 sm:hidden">
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+      </p>
+
+      <div class="space-y-3 flex flex-col items-center -mt-5">
+        <div
+          class="bg-whitesmoke border-primary border-[6px] rounded-3xl h-20 w-20 1.2px [transform:_rotate(41.36deg)] flex justify-center items-center">
+          <div class="bg-dark p-3 h-12 w-12 rounded-2xl flex justify-center items-center">
+            <p class="text-xl font-extrabold text-white [transform:_rotate(-41.36deg)]">
+              2
+            </p>
+          </div>
+        </div>
+        <p >Intermediate</p>
+      </div>
+      <p class="-mt-12 hidden md:flex">
+        ....................................................
+      </p>
+      <p style="line-height:0.3;" class="-mt-10 sm:hidden">
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+        .
+        <br>
+      </p>
+
+      <div class="space-y-3 flex flex-col items-center -mt-5">
+        <div
+          class="bg-whitesmoke border-primary border-[6px] rounded-3xl h-20 w-20 1.2px [transform:_rotate(41.36deg)] flex justify-center items-center">
+          <div class="bg-dark p-3 h-12 w-12 rounded-2xl flex justify-center items-center">
+            <p class="text-xl font-extrabold text-white [transform:_rotate(-41.36deg)]">
+              3
+            </p>
+          </div>
+        </div>
+        <p>Advanced</p>
+      </div>
+    </div>
+  </div>
+
+    <!-- footer -->
+   
+<%-include('../partials/footer')-%>
+<%-include('internpartials/applicationform')-%>
+  
+    <!-- Tailwind CSS script-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
+    <script> 
+      var message = '<%=username%>';
+      document.getElementById("openApplyMenu").addEventListener("click", function () {
+        if(message=='')
+        {
+          swal({  
+                      title: " Oops!",  
+                      text: "You Need To Login First",   
+                    }); 
+        }
+        else
+        {
+        document.getElementById("applyMenu").style.display = "block";
+        var struct = document.getElementById('struct')
+        struct.style.opacity='0.2'
+        struct.style.pointerEvents='none'
+        }
+      });
+
+      document
+        .getElementById("closeApplyMenu")
+        .addEventListener("click", function () {
+          document.getElementById("applyMenu").style.display = "none";
+          var struct = document.getElementById('struct')
+          struct.style.opacity='1'
+        struct.style.pointerEvents='auto'
+        });
+
+      </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<div class=" " id="logoutsection">
+    <div class="flex-col flex" >
+      <div class = "flex flex-row">
+      <p class="text-2xl color-yellow font-bold"><%=username%></p> 
+      <img src="../public/images/icons8-collapse-arrow-24.png" class="rotate-180 cursor-pointer" id="logoutbuttonopen">
+      <img src="../public/images/icons8-collapse-arrow-24.png" class=" hidden cursor-pointer" id="logoutbuttonclose">
+    </div>
+      <div id="logoutbutton" class="hidden">
+        <a href="/logout">
+        <button class="bg-dark w-36 h-10 rounded-lg text-white text-lg mx-auto">Log Out</button>
+      </a>
+      </div>
+    </div>
+   </div>
+
+   <script>
+    const logoutsection = document.getElementById('logoutsection')
+    const logoutbutton = document.getElementById('logoutbutton')
+    document.getElementById('logoutbuttonopen').addEventListener('click',()=>
+    {
+        logoutbutton.style.display='block'  
+        document.getElementById('logoutbuttonclose').style.display='block'
+        document.getElementById('logoutbuttonopen').style.display='none'
+        logoutsection.style.marginTop='50px'
+          
+    })
+    document.getElementById('logoutbuttonclose').addEventListener('click',()=>
+    {
+       logoutbutton.style.display='none'  
+         document.getElementById('logoutbuttonclose').style.display='none'
+        document.getElementById('logoutbuttonopen').style.display='block'
+        logoutsection.style.marginTop='0px'
+        
+        
+    })
+
+    
+   </script>

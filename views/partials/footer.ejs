@@ -1,0 +1,96 @@
+
+<style>
+  .footer-logo:hover
+  {
+    width: 50px;
+    height: 50px;
+  }
+</style>
+
+<div class="  bg-footer text-white items-center p-14 space-y-5 md:space-y-8 hidden md:block">
+  <a href="/">
+    <div class="flex justify-center items-center lg:mr-[65px] mr-[20px]" >
+      <img src="../public/images/twnewlogo2.png" alt="logo" class="lg:h-[150px] lg:w-[150px] h-[100px] w-[100px] mb-[15px] " />
+      <p class="text-2xl sm:text-5xl font-extrabold">ThinkWh?t</p>
+    </div>
+  </a>
+  
+    <ul class="flex sm:flex-row space-x-10 items-center justify-center text-xs sm:text-lg font-bold ">
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/about">About</a></li>
+      <li class="hidden sm:flex cursor-pointer" id="opentermspopup"><a href="#">Terms & Conditions</a></li>
+      <li class="sm:hidden cursor-pointer" ><a href="#">T&C</a></li>
+      <li id="openprivacypopup" class="cursor-pointer"><a href="#">Privacy</a></li>
+      <li id="openhelppopup" class="cursor-pointer"><a href="#">Help</a></li>
+      <li class="group hover:font-bold cursor-pointer" id="opencampuspopup" onclick="openCampusForm()">
+        Campus  Ambassador
+       </li>
+
+       <li id="blogs" class="cursor-pointer"><a href="#">Blogs</a></li>
+      <li id="faq" class="cursor-pointer"><a href="#">FAQs</a></li>
+      
+    </ul>
+  
+    <ul class="flex space-x-10 justify-center">
+      <li ><a href="https://instagram.com/thin.kwhat?igshid=ZDdkNTZiNTM="> <img src="../public/images//insta-logo.png" class="h-10 w-10 footer-logo" /></a></li>
+      <li > <a href="https://www.linkedin.com/company/thinkwhat/"><img src="../public/images/linkedin-logo.png" class="h-10 w-10 footer-logo" /></a></li>
+    </ul>
+    <div>
+      <p class="text-center text-white">Copyright &copy; 2023 CODISHER</p>
+    </div>
+  </div>
+ <!--Mob Nav-->
+ <div class="bg-black text-white md:hidden">
+  <div class="flex justify-between py-7 px-10 items-center border-b-2">
+    <p class="text-xl">Follow us</p>
+    <div class="flex items-center gap-3">
+      <a href="https://instagram.com/thin.kwhat?igshid=ZDdkNTZiNTM=">
+      <img src="../public/images/insta-logo.png" alt="insta-logo" class="h-7 footer-logo" />
+    </a>
+    <a href="https://www.linkedin.com/company/thinkwhat/">
+      <img
+        src="../public/images/linkedin-logo.png"
+        alt="linkedin-logo"
+        class="h-7 footer-logo"
+      />
+    </a>
+    </div>
+  </div>
+
+  <div class="p-10 gap-3 text-lg border-b-2 flex flex-col">
+    <a href="/">Home</a>
+    <a href="/contact">Contact</a>
+
+    <a href="#"><p id="openmobtermspopup">Terms & Conditions</p></a>
+    <a href="#"><p id="openmobprivacy">Privacy</p></a>
+    <a href="#"> <p id="openmobhelp">Help</p></a>
+    <a class="group hover:font-bold cursor-pointer" id="opencampuspopup" onclick="openCampusForm()">
+     Campus  Ambassador
+    </a>
+    <a id="blogs" class="cursor-pointer"><a href="#">Blogs</a></a>
+      <a id="faq" class="cursor-pointer"><a href="#">FAQs</a></a>
+  </div>
+
+  <div class="flex flex-col items-center justify-center p-5">
+    <a href="/"
+      ><div class="flex items-center">
+        <img src="../public/images/twnewlogo2.png" alt="logo" class="h-28" />
+        <p class="text-3xl font-bold">ThinkWht</p>
+      </div>
+    </a>
+    <p>Copyright &copy; 2023 CODISHER</p>
+  </div>
+</div>
+
+</div>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+<!--Privacy Popup-->
+<%-include('privacypopup')-%>
+<%-include('help')-%>
+<%-include('terms')-%>
+<%-include('campuscard')%>
+</html> 
