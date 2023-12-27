@@ -1,0 +1,100 @@
+<%-include('partials/header')%>
+<p class="text-center text-5xl">Internships</p>
+   <div class="flex flex-wrap justify-center items-center lg:space-x-10 lg:space-y-0 space-y-10">
+       
+      <% if (user.internships.length>0) { %>
+         <% user.internships.forEach(function(internship) { %>
+             <div class="w-fit p-5 bg-gray-400 flex flex-col space-y-8 my-5">
+               <p>Internship Domain : <%=internship.internship_domain_name%></p>
+               <% if (internship.payment == true) { %>
+                   <p>Download Offer Letter</p>
+                   <% if (internship.internship_task_submmited == true) { %>
+                      <p>Task Submitted</p>
+                     <% if (internship.internship_certificate == true) { %>
+                        <a href="/internship/<%=internship._id%>/certificate">Download Certificate</a>
+                    <% } else { %>
+                     <p>Certificate</p>
+                    <% } %>
+                 <% } else { %>
+                     <p onclick="submit_task('<%=internship._id%>','<%=user._id%>')" class="cursor-pointer">Submit Task</p>
+                     <p>Certificate</p>
+                 <% } %>
+                  
+              <% } else { %>
+                     <h1>Payment Status : Pending</h1>
+              <% } %>
+             </div>
+        <% }); %>
+
+     <% } else { %>
+         <h1>You Are Not Enrolled With Any Internships</h1>
+     <% } %>
+
+   </div>
+   <div id="form-modal"></div>
+   <%-include('partials/footer')%>
+<script>
+   function submit_task(internship_id,user_id){
+        
+      document.getElementById('form-modal').innerHTML=  `<div id="contactUs" style=" background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25))" class="w-[100vw] h-[100vh] flex justify-center items-center top-0 bg-[rgba(0, 0, 0, 0.25)] top-0 bottom-0 fixed overflow-y-scroll z-30
+  overflow-hidden">
+      <div
+        class="lg:w-[70%] w-[95%] relative  m-3  gap-3 mx-auto bg-white top-auto  z-30  p-[1.5rem] rounded-[1.25rem] shadow-md "
+        id="contactUs">
+        <p class="absolute top-7 right-5 w-6 text-xl font-bold cursor-pointer" alt="cross icon" id="closeForm">X</p>
+
+          <div class="mt-5">
+            <form class="space-y-2 flex flex-col" id="task_form">
+                <input type="hidden" name="internship_id" value="${internship_id}">
+                <input type="hidden" name="user_id" value="${user_id}">
+                <label>Task 1 Github URL </label>
+                <input type="text" class="p-2 border-2 border-gray-800" name="github_url_task1" required>
+                <label>Task 2 Github URL </label>
+                <input type="text" class="p-2 border-2 border-gray-800" name="github_url_task2" required>
+                <label>Task 1 LinkedIn URL </label>
+                <input type="text" class="p-2 border-2 border-gray-800" name="linkedin_url_task1" required>
+                <label>Task 2 LinkedIn URL </label>
+                <input type="text" class="p-2 border-2 border-gray-800" name="linkedin_url_task2" required>
+                <button class="bg-yellow-600 p-2 rounded-lg" type="submit">Submit</button>
+            </form>
+          </div>
+      </div>
+    
+</div>`;
+$(document).ready(function () {
+    $('#task_form').submit(function (event) {
+      event.preventDefault(); // Prevent the default form submission
+      // Serialize the form data
+      const formData = $(this).serialize();
+
+      // Send an AJAX request to the server
+      $.ajax({
+        type: 'POST',
+        url: '/internship/submit_intern_task',
+        data: formData,
+        success: function (response) {
+          // Display the success message
+          $('#task_form')[0].reset();
+          Swal.fire(response)
+
+          // Optionally, reset the form
+
+        },
+        error: function (error) {
+          Swal.fire(error.responseText)
+        },
+      });
+    });
+  })
+
+document.getElementById('closeForm').addEventListener('click',()=>{
+    document.getElementById('form-modal').innerHTML=  ``;
+})
+} 
+</script>
+
+
+
+
+
+

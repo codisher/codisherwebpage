@@ -8,6 +8,7 @@ const userRouter = require('./router/userRouter')
 const studentRouter = require('./router/studentRouter')
 const adminRouter = require('./router/adminRouter')
 const mongoose = require('mongoose')
+const userModel = require('./model/userModel')
 const campuscontroller = require('./controller/campuscontroller')
 const mongourl=process.env.MONGOURL
 const bodyParser = require("body-parser");
@@ -15,7 +16,6 @@ const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const cookieParser = require('cookie-parser')
 const { name } = require('ejs');
-const auth = require('./controller/auth');
 const session = require('express-session');
 app.use(session(
     {
@@ -44,18 +44,70 @@ app.use("/internship",internRouter.internRouter)
 app.use("/student",studentRouter.studentRouter)
 app.use("/",userRouter.userRouter)
 app.use("/admin",adminRouter.adminRouter)
-app.use("/",auth.app)
 app.post("/campusambassador",campuscontroller.postcampusform )
-//Database Connection
-// mongoose.set("strictQuery", false);
-// mongoose.connect(mongourl, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
+// dataabase Connection
+mongoose.set("strictQuery", false);
+mongoose.connect(mongourl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
     
-//   });
-//   const db = mongoose.connection;
-//   db.on("error", (error) => console.log(error));
-//   db.once("open", () => console.log("Database Connected"));
-  
+  });
+  const db = mongoose.connection;
+  db.on("error", (error) => console.log(error));
+  db.once("open", () => console.log("Database Connected"));
 
- 
+
+  // Google Auth
+  
+passport.use(
+	new GoogleStrategy(
+		{
+			clientID: process.env.google_client_id,
+			clientSecret: process.env.google_client_secret,
+			callbackURL: `${process.env.host}auth/google/callback`,
+		},
+		(accessToken, refreshToken, profile, done) => {
+			// You can save the user's profile in the database or handle the authentication as needed.
+			return done(null, profile);
+		}
+	)
+);
+
+passport.serializeUser((user, done) => {
+	done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+	done(null, user);
+});
+
+app.get(
+	'/auth/google',
+	passport.authenticate('google', { scope: ['profile', 'email'] })
+);
+
+app.get('/', (req, res) => {
+	res.render('index');
+})
+
+app.get(
+	'/auth/google/callback',
+	passport.authenticate('google', { failureRedirect: '/' }),
+	async (req, res) => {
+		const exist_user = await userModel
+			.findOne({ email: req.user.emails[0].value })
+			.lean();
+		if (exist_user) {
+			res.cookie('user_email', encodeURIComponent(req.user.emails[0].value));
+			return res.redirect('/');
+		} else {
+			req.body.name = req.user.displayName;
+			req.body.email = req.user.emails[0].value;
+			req.body.is_verified = true;
+			const google_user = new userModel(req.body);
+			const g_user = await google_user.save();
+			res.cookie('user_email', encodeURIComponent(req.user.emails[0].value));
+			return res.redirect('/');
+		}
+	}
+);

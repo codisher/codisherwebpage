@@ -1,8 +1,11 @@
 require('dotenv').config()
 const userModel = require("../model/userModel")
 const nodemailer = require('nodemailer');
+const {registerValidation} = require('../validations/authvalidation')
 const adminmail = process.env.SMAIL
 const adminpass = process.env.SPASS
+const bcrypt = require('bcrypt');
+const saltrounds = 10;
 const getLoginpage = async (req,res)=>
 {
     try{
@@ -16,63 +19,76 @@ const getLoginpage = async (req,res)=>
 const getsignup = async (req,res)=>
 {
     try{
-             res.render('usersignup',{message:undefined,vmessage:undefined})
+             res.render('usersignup')
     }
     catch(error)
     {
         console.log(error.message)
     }
 }
-const adduser = async (req,res)=>
+const user_register = async (req,res)=>
+{
+    const { error } = registerValidation(req.body);
+    if (error) {
+      return res.status(200).json(error.message);
+    }
+    const salt= await bcrypt.genSalt(10);
+    const securepassword = await bcrypt.hash(req.body.password,salt)
+    req.body.password=securepassword
+    try
+    {
+        const given_mail_id = req.body.email
+        const exist_user = await userModel.findOne({email:given_mail_id})
+        if(exist_user)
+        {
+            return res.status(200).json("User Already Exist")
+        }
+        const user_count = await userModel.count()
+        req.body.student_id = `CD1625000${user_count+1}`
+        const user = new userModel(req.body)
+        const createUser = await user.save()
+        // const {error} = sendmail2(createUser.email,createUser._id)
+        // if(error)
+        // {
+        //     return res.status(200).json(error.message)
+        // }
+        return res.status(200).json("An Email Has Been Sent To Your Email Id .Please Verify Your Email Id")
+    }
+    catch(error)
+    {
+        return res.send(error.message)
+    }
+}
+
+const userLogin = async (req,res)=>
 {
     
-    const name = req.body.name
-    const email = req.body.email
-    const password=req.body.password
-    const confirmpassword = req.body.cpassword
-
-      // check if the are empty 
-      if (!email || !name || !password || !confirmpassword) 
-      {
-        res.render("usersignup", { message: "All Fields Required !"});
-    } 
-    else if (password != confirmpassword)
-     {
-        res.render("usersignup", { message: "Password Don't Match !"});
-     }
-
-     else{
-        const user = await userModel.findOne({email:email})
-        if(user)
+    try
+    {
+          const {email} = req.body
+            const user = await userModel.findOne({ email }).lean();
+            if (!user) {
+              return  res.status(400).json("User Not Exist");
+            }
+            if(user.is_verified!==1)
+            {
+              return res.status(400).json("Please Verify your Email Id")
+            }
+        const password = req.body.password;
+        if(!bcrypt.compareSync(password, user.password))
         {
-            res.render('usersignup',{message:"User Already Exist"})
+            return res.status(400).json("Incorrect Password")
+        
         }
-        else{
-
-            try
-        {
-
-          const singleuser=new userModel(
-          {
-            displayName:req.body.name,
-            email:req.body.email,
-            password:req.body.password
-          });
-          
-          const userData = await singleuser.save();
-          const receiver = userData.email;
-          const user_id =userData._id;
-           sendmail2(receiver,user_id);
-           res.render('usersignup',{message:"verification"})
-
+         const encoded_email = encodeURIComponent(user.email)
+         console.log(encoded_email)
+         res.cookie('user_email',encoded_email)
+         return res.status(200).json("Logged_In")
     }
     catch(error)
     {
-        console.log(error.message)
+       return res.status(200).json(error.message)
     }
-        }
-    
-}
 }
 
 const smail=adminmail;
@@ -231,14 +247,55 @@ const loginuser = async (req,res)=>
 }
 */
 
+const getuserdetail = async (req,res)=>
+{
+    try
+    {
+        const user = await userModel.findOne({email:req.query.email})
+        const user_detail =
+        {
+            name:user.name,
+            email:user.email,
+        }
+
+        return res.status(200).json(user_detail)    
+
+    }
+    catch(error)
+    {
+        console.log(error.message)
+    
+    }
+}
+
+
+const userlogout = async (req,res)=>
+{
+    try
+    {
+        req.session.destroy()
+        res.clearCookie('user_email')
+        res.redirect('/')
+    }
+    catch(error)
+    {
+        console.log(error.message)
+    }
+}
 module.exports = {
     getLoginpage,
     getsignup,
-    adduser,
+    user_register,
+    userLogin,
     verifymail,
     forgotpassword,
     sentpasswordresetlink,
     takeemail,
-    getnewpasswordpage
+    getuserdetail,
+    getnewpasswordpage,
+    userlogout
    // loginuser
 }
+
+
+

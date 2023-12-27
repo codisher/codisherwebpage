@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+</head>
+<body>
+    <p class="text-2xl font-bold text-center">User Details</p>
+
+    <div>
+        <table class="overflow-x-scroll w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Name</th>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Email</th>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Internship Domain</th>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Transaction ID</th>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Mode of Payment</th>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Payment Status</th>  
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Task 1</th> 
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Task 2</th>      
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Task Submitted</th>         
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Github Task1</th>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Github Task2</th>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">LinkedIn Task1</th>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">LinkedIn Task2</th>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">Certificate</th>
+                    <th class="px-4 py-2 whitespace-nowrap overflow-hidden text-sm">LOR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0;i<userDetails.length;i++){ %>
+                    <tr>
+                        <td class="border  px-4 py-2 whitespace-nowrap overflow-hidden text-sm"><%=userDetails[i].name%></td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm"><%=userDetails[i].email%></td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm">
+                        <% userDetails[i].internships.forEach(function(item) { %>
+                           <li> <%=item.internship_domain_name%> </li>
+                        <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                               <button> <%=item.transaction_id%> </button>
+                                </li>
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                               <button> <%=item.payment%> </button>
+                                </li>
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm bg-gray-400">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                                <a href="/admin/update_intern_status?email=<%=userDetails[i].email%>&internship_id=<%=item._id%>">
+                               <button> <%=item.payment%> </button>
+                                </a>
+                                </li>
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                               <button> <%=item.internship_task1%> </button>
+                                </li>
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                               <button> <%=item.internship_task2%> </button>
+                                </li>
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                               <button> <%=item.internship_task_submmited%> </button>
+                                </li>
+
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                                <a href="<%=item.internship_task1_github_url%>" target="_blank">
+                                    <button class="text-blue-800"> Click here </button>
+                                </a>                  
+                                </li>            
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                                <a href="<%=item.internship_task2_github_url%>" target="_blank">
+                                    <button class="text-blue-800"> Click here </button>
+                                </a>
+                                </li>
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                                <a href="<%=item.internship_task1_linkedin_url%>" target="_blank">
+                                    <button class="text-blue-800"> Click here </button>
+                                </a>
+                                </li>
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                                <a href="<%=item.internship_task2_linkedin_url%>" target="_blank">
+                                    <button class="text-blue-800"> Click here </button>
+                                </a>
+                                </li>
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm bg-gray-400">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                                <a href="/admin/approve_certificate?email=<%=userDetails[i].email%>&internship_id=<%=item._id%>">
+                                    <button> Approve : <%=item.internship_certificate%></button>
+                                </a>
+                                </li>
+                            <% }); %>
+                        </td>
+                        <td class="border px-4 py-2 whitespace-nowrap overflow-hidden text-sm bg-gray-400">
+                            <% userDetails[i].internships.forEach(function(item) { %>
+                                <li>
+                               <button> Approve :<%=item.internship_lor%> </button>
+                                </li>
+                            <% }); %>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

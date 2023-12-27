@@ -3,20 +3,22 @@
     <!-- header section -->
     <div class="bg-light flex flex-col-reverse items-center px-5 w-full md:px-16 py-14 sm:flex-row">
       <div class="w-full  sm:space-y-3">
-        <p class="color-primary text-2xl md:text-5xl font-extrabold">Start Your Learning as</p>
-        <p class="color-yellow -mt-1 text-2xl md:text-5xl font-extrabold"><%=coursedata.name%></p>
+        <p class="color-primary text-2xl md:text-5xl font-extrabold">Start Your Learning in</p>
+        <p class="color-yellow -mt-1 text-2xl md:text-5xl font-extrabold"><%=internship_data.name%></p>
         <p class="color-primary mt-2 md:text-lg text-sm">
          
         </p>
       </div>
       
       <div class="w-full flex justify-end items-center">
-        <img src="<%=coursedata.courseimage%>" alt="avatar" class="md:h-80" />
+        <img src="<%=internship_data.courseimage%>" alt="avatar" class="md:h-80" />
       </div>
     </div>
 
     <!-- course detail summary -->
    
+
+
        <!-- apply bar -->
        <div class="-mt-12 bg-white shadow-xl w-[62%] mx-auto flex flex-col sm:flex sm:flex-row justify-center items-center space-y-2 sm:space-x-10 sm:space-y-0 p-5
        rounded-xl mb-24 lg:w-fit lg:px-16 lg:gap-16">
@@ -35,12 +37,12 @@
 
 <button
 class=" w-[140px]  md:w-[200px]  bg-dark text-white sm:py-4 sm:px-12 sm:mx-10 px-3 py-2 font-bold sm:font-extrabold rounded-full
-     lg:w-full"
-id="openApplyMenu">
+     lg:w-full" onclick="open_internship_form('<%=internship_data.name%>','<%=internship_data.courseID%>')">
 Apply Now
 </button>
 
 </div>
+
 
 
         <!-- pop up menu -->
@@ -51,9 +53,6 @@ Apply Now
     <%-include('internpartials/internmiddle')-%>
     
 
-    <!-- Courses Highlights section -->
-
-   
 
     <!-- learning path -->
   <div class="mb-24 space-y-14 -mt-14">
@@ -157,48 +156,82 @@ Apply Now
       </div>
     </div>
   </div>
+<div id="form-modal"></div>
 
-
-
-
+    <!-- Courses Highlights section -->
+   
 
     <!-- footer -->
    
 <%-include('../partials/footer')-%>
-<%-include('internpartials/applicationform')-%>
+
   
     <!-- Tailwind CSS script-->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
-    <script> 
-      var message = '<%=username%>';
-      document.getElementById("openApplyMenu").addEventListener("click", function () {
-        if(message=='')
-        {
-          swal({  
-                      title: " Oops!",  
-                      text: "You Need To Login First",   
-                    }); 
-        }
-        else
-        {
-        document.getElementById("applyMenu").style.display = "block";
-        var struct = document.getElementById('struct')
-        struct.style.opacity='0.2'
-        struct.style.pointerEvents='none'
-        }
-      });
+    <script>
+      function open_internship_form(internship_domain_name,internship_domain_id){
+      const user_email = decodeURIComponent(document.cookie.split('; ').find(row => row.startsWith('user_email=')))
+        if (user_email !== 'undefined') {
+          const new_user = decodeURIComponent(user_email.split('=')[1]);
+          
+           
+         document.getElementById('form-modal').innerHTML=  `<div id="contactUs" style=" background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25))" class="w-[100vw] h-[100vh] flex justify-center items-center top-0 bg-[rgba(0, 0, 0, 0.25)] top-0 bottom-0 fixed overflow-y-scroll z-30
+     overflow-hidden">
+         <div
+           class="lg:w-[70%] w-[95%] relative  m-3  gap-3 mx-auto bg-white top-auto  z-30  p-[1.5rem] rounded-[1.25rem] shadow-md "
+           id="contactUs">
+           <p class="absolute top-7 right-5 w-6 text-xl font-bold cursor-pointer" alt="cross icon" id="closeForm">X</p>
+   
+             <div class="mt-5">
+               <form class="space-y-2 flex flex-col" id="internship_form">
+                   <input type="hidden" name="course_name" value="${internship_domain_name}">
+                   <input type="hidden" name="course_id" value="${internship_domain_id}">
+                   <input type="hidden" name="user_email" value="${new_user}">
+                   <label>Transaction ID </label>
+                   <input type="text" class="p-2 border-2 border-gray-800" name="transaction_id" required>
+                   <button class="bg-yellow-600 p-2 rounded-lg" type="submit">Submit</button>
+               </form>
+             </div>
+         </div>
+       
+   </div>`;
+   $(document).ready(function () {
+       $('#internship_form').submit(function (event) {
+         event.preventDefault(); // Prevent the default form submission
+         // Serialize the form data
+         const formData = $(this).serialize();
+   
+         // Send an AJAX request to the server
+         $.ajax({
+           type: 'POST',
+           url: '/internship/add_intern',
+           data: formData,
+           success: function (response) {
+             // Display the success message
+             $('#internship_form')[0].reset();
+             $('#closeForm').click();
+             Swal.fire(response)
+             // Optionally, reset the form
+   
+           },
+           error: function (error) {
+             Swal.fire(error.responseText)
+           },
+         });
+       });
+     })
+   
+   document.getElementById('closeForm').addEventListener('click',()=>{
+       document.getElementById('form-modal').innerHTML=  ``;
+   })
+   } 
+   else
+  {
+     Swal.fire('Please Login First')
+  }
 
-      document
-        .getElementById("closeApplyMenu")
-        .addEventListener("click", function () {
-          document.getElementById("applyMenu").style.display = "none";
-          var struct = document.getElementById('struct')
-          struct.style.opacity='1'
-        struct.style.pointerEvents='auto'
-        });
-
-      </script>
+  }
+  
+   </script>
 </body>
 
 </html>

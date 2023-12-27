@@ -6,277 +6,182 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="google-site-verification" content="DBVzQPoTNg0ymjqseZQPtgUjRI53Zy93iLjQM0a-sM4" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="THINKWH?T" />
-<meta property="og:description" content="A Next Step of Learning" />
-<meta property="og:url" content="https://thinkwht.com/" />
+    <meta property="og:title" content="CODISHER" />
+<meta property="og:description" content="Give Best Start To Your Career" />
+<meta property="og:url" content="https://codisher.com/" />
 <meta property="og:image" content="https://thinkwht.com/public/images/twnewlogo2.png" />
+<title>CODISHER</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="./public/images/twfavicon.jpg">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+<!-- Axios CDN -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <title>ThinkWh?t</title>
-    <link rel="icon" type="image/x-icon" href="./public/images/twfavicon.jpg">
-    <link rel="stylesheet" href="../assets/style.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/style.css" />
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
   </head>
-
-  <body>
-   
-    <div id="struct">
-      
-      <nav class="shadow-sm px-2  bg-light top-0 lg:py-2 " id="head">
-        <!-- for large screens -->
-        <div
-          class="hidden md:flex justify-between items-center lg:justify-evenly"
-        >
-          <a href="/">
-          <img src="../public/images/codisher_log.png" alt="logo image" class="h-[120px] w-[120px] mb-[10px]"  />
-        </a>
-          <div
-            class="flex border bg-white py-2 px-3 gap-2 rounded-full items-center lg:py-3 lg:px-5"
-          >
-            <img src="../public/images/searchButton.png" class="h-5" />
-            <input
-              type="text"
-              placeholder="Search"
-              class="border-none focus:outline-none bg-transparent w-20 lg:w-52"
-              onchange="search()"
-              id="search"
-            />
-          </div>
-
-          <div>
-            <ul class="flex text-lg gap-3 items-center lg:gap-10 lg:text-xl ">
-              <a href="/" class="group hover:font-bold">
-                <li>Home</li>
-                <div
-                  class="hidden bg-dark h-1 w-1 mx-auto rounded-full animate-bounce group-hover:flex"
-                ></div>
-              </a>
-              <a href="/about" class="group hover:font-bold">
-                <li>About</li>
-                <div
-                  class="hidden bg-dark h-1 w-1 mx-auto rounded-full animate-bounce group-hover:flex"
-                ></div>
-              </a>
-              <a href="/contact" class="group hover:font-bold">
-                <li>Contact</li>
-                <div
-                  class="hidden bg-dark h-1 w-1 mx-auto rounded-full animate-bounce group-hover:flex"
-                ></div>
-              </a>
-              <a href="/our-educators" class="group hover:font-bold cursor-pointer" id="oureducators">
-                <li>Our Educators</li>
-                <div
-                  class="hidden bg-dark h-1 w-1 mx-auto rounded-full animate-bounce group-hover:flex"
-                ></div>
-              </a>
-            </ul>
-          </div>
-         
-          
-          <% if ( username == undefined) { %>
-            <div class="gap-3 flex lg:gap-10 ">
-              <div>
-                <a href="/login">
-                  <button
-                    class="color-primary bg-white py-3 px-3 mx-5 xl:w-[150px] md:w-[100px] rounded-full items-center space-x-3 text-lg  group hover:font-bold"
-                  >
-                    Login
-                  </button>
-                </a>
-              </div>
+<style>
   
+  .animate-slide-in-right {
+        animation: slide-in-right 1s ease-out;
+    }
+
+    @keyframes slide-in-right {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    
+
+    .animate-slide-in-left {
+        animation: slide-in-left 1s ease-out;
+    }
+
+    @keyframes slide-in-left {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+    }
+  </style>
+  <body>   
+    <header>
+      <nav class="relative">
+          <div class="font-lato flex items-center justify-between lg:px-10 px-5  py-2 shadow-md">
+              <!--Logo-->
               <div>
-                <a href="/signup">
-                  <button
-                    class="bg-dark text-white py-3 px-3 mx-5 xl:w-[150px] md:w-[100px] rounded-full items-center space-x-3 text-lg   group hover:font-bold"
-                  >
-                    Sign Up
-                  </button>
-                </a>
+                  <a href="/">
+                      <img src="../public/images/twlogo.svg" class="w-[4rem]">
+                  </a>
               </div>
-            </div>
-            <%} else { %>
-            <div class="p-2" id="logoutsection">
-            <div class="flex-col flex" >
-              <div class = "flex gap-2 items-center">
-              <p class="text-2xl color-yellow font-bold"><%=username%></p> 
-              <img src="../public/images/dropdown-yellow.png"
-              class="cursor-pointer h-5"
-              id="logoutbuttonopen"
-              onclick="addShadow()" />
-              <img src="../public/images/dropdown-yellow.png"
-              class="cursor-pointer h-5 rotate-180 hidden"
-              id="logoutbuttonclose"
-              onclick="removeShadow()"
-            />
-            </div>
-              <div id="logoutbutton" class="hidden">
-                <a href="/logout">
-                <button class="w-36 h-10 rounded-lg color-yellow text-lg text-left font-bold">Log Out</button>
-              </a>
+              <!--Searchbox-->
+              <div>
+                  <div
+                      class="lg:flex hidden space-x-2  w-fit  px-5 py-2 rounded-full shadow-[2px_5px_2px_2px_#4F2D5E] justify-around">
+                      <img src="../public/images/searchicon.svg" class="w-4">
+                      <input type="text" placeholder="Search"
+                          class="font-inter text-[.875rem] text-[#275473] outline-none w-[70%] " id="search">
+                  </div>
               </div>
-            </div>
-           </div>
-            
-            <% } %>
-        </div>
-
-        <!-- mob nav -->
-        <nav class="navbar md:hidden">
-        <div class="flex justify-between  items-center md:hidden">
-          <div class="flex gap-5 items-center">
-            <div>
-              <a href="/">
-              <img src="../public/images/twnewlogo2.png" alt="logo image" class="h-20 w-20" />
-            </a>
-            </div>
-
-            <div
-              class="flex border bg-white py-2 px-3 gap-2 rounded-full items-center h-fit"
-            >
-              <img src="../public/images/searchButton.png" class="h-5" />
-              <input
-                type="text"
-                placeholder="Search"
-                class="border-none focus:outline-none bg-transparent w-20 sm:w-40"
-                onchange="searchMob()"
-                  id="searchMob"
-              />
-            </div>
-          </div>
-
-          <!-- hamburger -->
-          <div onclick="this.classList.toggle('active')" class="burger">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="70"
-              height="70"
-              viewBox="0 0 200 200"
-              class="cursor-pointer"
-            >
-              <g stroke-width="6.5" stroke-linecap="round">
-                <path
-                  d="M72 82.286h28.75"
-                  fill="#009100"
-                  fill-rule="evenodd"
-                  stroke="rgb(39, 84, 115)"
-                />
-                <path
-                  d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
-                  fill="none"
-                  stroke="rgb(39, 84, 115)"
-                />
-                <path
-                  d="M72 125.143h28.75"
-                  fill="#009100"
-                  fill-rule="evenodd"
-                  stroke="rgb(39, 84, 115)"
-                />
-                <path
-                  d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
-                  fill="none"
-                  stroke="rgb(39, 84, 115)"
-                />
-                <path
-                  d="M100.75 82.286h28.75"
-                  fill="#009100"
-                  fill-rule="evenodd"
-                  stroke="rgb(39, 84, 115)"
-                />
-                <path
-                  d="M100.75 125.143h28.75"
-                  fill="#009100"
-                  fill-rule="evenodd"
-                  stroke="rgb(39, 84, 115)"
-                />
-              </g>
-            </svg>
-          </div>
-
-          <!-- insert mob menu below -->
-        </div>
-        <div class="nav-list op  flex flex-col justify-center text-center items-center">
-          
-            <ul class="opn text-lg  font-bold space-y-5 gap-5">
-                <a href="/" class="group hover:font-bold">
-                  <li>Home</li>
-                  <div
-                    class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
-                  ></div>
-                </a>
-                <a href="/about" class="group hover:font-bold">
-                  <li>About</li>
-                  <div
-                    class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
-                  ></div>
-                </a>
-                <a href="/contact" class="group hover:font-bold">
-                  <li>Contact</li>
-                  <div
-                    class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
-                  ></div>
-                </a>
-                <a href="/our-educators" class="group hover:font-bold cursor-pointer">
-                  <li>Our Educators</li>
-                  <div
-                    class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
-                  ></div>
-                </a>
-                  <% if (username==undefined) { %>
-                    <a href="/login" class="group hover:font-bold">
-                      <li>Login</li>
-                      <div
-                        class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
-                      ></div>
-                    </a>
-                    <a href="/signup" class="group hover:font-bold">
-                      <li>Sign Up</li>
-                      <div
-                        class="hidden bg-dark h-2 w-2 mx-auto rounded-full animate-bounce group-hover:flex"
-                      ></div>
-                    </a>
-                    <%} else
-                     { %>
-                      <li>
-                        <div class=" mx-auto" id="moblogoutsection">
-                          <div class="flex-col flex" >
-                            <div class = "flex gap-2 items-center">
-                            <p class="text-2xl color-yellow font-bold"><%=username%></p> 
-                            <img src="../public/images/dropdown-yellow.png"
-                            class="cursor-pointer h-5"
-                            id="moblogoutbuttonopen" />
-                            <img src="../public/images/dropdown-yellow.png"
-                            class="hidden cursor-pointer rotate-180 h-5"
-                            id="moblogoutbuttonclose" />
-                          </div>
-                            <div id="moblogoutbutton" class="hidden">
-                              <a href="/logout">
-                              <button class="w-36 h-10 rounded-lg color-yellow text-lg text-left font-bold">Log Out</button>
-                            </a>
-                            </div>
-                          </div>
+              <div class="flex items-center gap-[6rem]">
+                  <!--NaavList-->
+                  <div>
+                      <div class="lg:flex hidden flex-row space-x-5 items-center">
+                          
+                       <a>
+                         <div>
+                          <p>Home</p>
                          </div>
-                        
-                      </li>
-                    <% } %>
-              </ul>
-        </div>
-        </nav>
+                       </a>
+                       <a>
+                        <div>
+                         <p>About</p>
+                        </div>
+                      </a>
+                      <a>
+                        <div>
+                         <p>Contact</p>
+                        </div>
+                      </a>
+                      <a>
+                        <div>
+                         <p>Blogs</p>
+                        </div>
+                      </a>
+                      </div>
+                  </div>
+
+
+                  <div id="profile_section" class="cursor-pointer">
+
+                  </div>
+              </div>
+
+
+
+              <div class="w-fit absolute bg-white top-0 z-[1000] right-0 border-[1px] border-gray-400 pb-10 space-y-5 shadow-[2px_2px_2px_2px_black] hidden"
+                  id="profile_div">
+                  <div class="flex justify-between p-5 ">
+                      <p class="text-[#275473] text-2xl font-bold font-inter"><span
+                              class="lg:flex hidden">Profile</span><span class="lg:hidden flex">Menu</span></p>
+                      <p class="text-2xl font-extrabold cursor-pointer" id="close_profile">X</p>
+                  </div>
+                  <div class="bg-gray-700 p-[0.5px] h-[0.5px]"></div>
+                  <div class="flex items-center justify-around px-10 space-x-5 py-2" id="user_profile">
+                      <div class="bg-[#FFB656] p-2 rounded-full w-fit">
+                          <i class="text-[#FFB656]"><img src="../public/images/user_icon.png" class="h-10 w-10"></i>
+                      </div>
+                      <div class="">
+                          <p class="text-2xl text-[#275473] font-bold font-inter"><span id="user_name"></span></p>
+                          <p class="text-[#2274ACC2] text-lg font-inter"><span id="user_email"></span></p>
+                      </div>
+                  </div>
+                  <div class="mx-auto w-fit flex flex-col justify-center  space-y-7 p-5">
+                      <div class="w-fit flex flex-col justify-center space-y-5 lg:hidden">
+                          <a href="/">
+                              <div class="flex space-x-5">
+                                  <p class="text-[#2274ACC2] font-inter text-2xl">Home</p>
+                              </div>
+                          </a>
+                          <a href="/about">
+                              <div class="flex space-x-5">
+                                
+                                  <p class="text-[#2274ACC2] font-inter text-2xl">About</p>
+                              </div>
+                          </a>
+                          <a href="/contact">
+                            <div class="flex space-x-5">
+                
+                                <p class="text-[#2274ACC2] font-inter text-2xl">Contact</p>
+                            </div>
+                        </a>
+                      </div>
+                      <div class="w-fit flex flex-col justify-center space-y-5">
+                          <div class="flex space-x-5 cursor-pointer" onclick="redirect_internship_page()">
+                              <p class="text-[#2274ACC2] font-inter text-2xl">Enrolled Internships</p>
+                          </div>
+                      <a href="/contact">
+                        <div class="flex space-x-5">
+            
+                            <p class="text-[#2274ACC2] font-inter text-2xl">Enrolled Courses</p>
+                        </div>
+                    </a>
+                      </div>
+                  </div>
+                  <div id="in_out_section">
+
+                  </div>
+
+              </div>
+         
       </nav>
 
-      <!-- hero section -->
-
-      <!-- for large screens-->
-      
+  </header>
  
     <script>
 
-const addShadow = () => {
-          document.getElementById("logoutsection").classList.add("shadow");
-        };
-        const removeShadow = () => {
-          document.getElementById("logoutsection").classList.remove("shadow");
-        };
+
 
         // search functionality
         const search = () => {
@@ -501,62 +406,104 @@ const addShadow = () => {
           }
         };
 
+        const user_email = decodeURIComponent(document.cookie.split('; ').find(row => row.startsWith('user_email=')))
+
+        function redirect_internship_page()
+        {
+              if(user_email !== 'undefined')
+            {
+              const new_user = decodeURIComponent(user_email.split('=')[1]);
+              window.location.replace(`/registered_internships/${new_user}`)
+            }
+            else
+            {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please Login to Enroll',
+                    footer: '<a href="/login">Login</a>'
+                  })
+            }
+        }
+        
+        if (user_email !== 'undefined') {
+            const new_user = decodeURIComponent(user_email.split('=')[1]);
+            // Define the URL you want to fetch
+            var apiUrl = `http://localhost:7021/user_detail?email=${new_user}`;
+            let fetchedData;
+            document.getElementById('profile_section').innerHTML = `<div id="profile_button"><div class="bg-[#FEB656] p-2 rounded-full lg:flex hidden"><img src="../public/images/user_icon.png" class="h-10 w-10"></div>
+                                                                   <div class="lg:hidden flex"><i class="fa fa-bars w3-xlarge"></i></div></div>`
+
+            // Use the fetch API to make a request
+            document.getElementById('user_profile').classList.remove('hidden')
+            document.getElementById('in_out_section').innerHTML = `
+            <a href="/logout">
+            <div class="flex border-2 border-gray-800 justify-center items-center  rounded-lg w-[90%] mx-auto">
+             <img src="../public/images/logout_icon.svg" class="h-8 w-8">
+              <p class="text-lg text-[#275473] font-inter text-[.875rem]">Logout</p>
+            </div>
+           </a>`
+            fetch(apiUrl)
+                .then(response => {
+                    // Check if the response status is OK (200)
+                    if (response.ok) {
+                        // Parse the response as JSON
+                        return response.json();
+                    } else {
+                        throw new Error('Failed to fetch data');
+                    }
+                })
+                .then(data => {
+                    fetchedData = data;
+                    document.getElementById('user_name').innerText = fetchedData.name
+                    document.getElementById('user_email').innerText = fetchedData.email
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+        }
+        else {
+            document.getElementById('profile_section').innerHTML = `
+                                                                <a href="/login" class="lg:flex hidden">
+                                                                <div class=" flex space-x-3 bg-[#532F78] px-4 py-1.5 rounded-lg items-center">
+                                                                     <img src="../public/images/LogIn_Icon.svg" class="w-5 h-5">
+                                                                                <p class="text-[#fff] text-[.9rem]">Login</p>
+                                                                </div>
+                                                                </a>
+                                                                <div id="profile_button" class="lg:hidden flex">
+                                                                <div class=""><i class="fa fa-bars w3-xlarge"></i></div>
+                                                             <div>
+                                                             `;
+            document.getElementById('in_out_section').innerHTML = `<a href="/login" class="lg:hidden flex">
+                                                                            <div class="flex border-2 border-gray-800 justify-center items-center  rounded-lg w-[90%] mx-auto">
+                                                                                <img src="../public/images/loginicon.svg" class="w-4 h-4">
+                                                                                <p class="text-[#275473] text-[.875rem]">Login</p>
+                                                                             </div>
+                                                                </a>`
+            document.getElementById('user_profile').classList.add('hidden')
+        }
 
 
+        const profile_div = document.getElementById('profile_div');
+        const profile_button = document.getElementById('profile_button');
+
+        profile_button.addEventListener('click', () => {
+            profile_div.classList.remove('hidden'); // Show the div
+            profile_div.classList.add('animate-slide-in-right'); // Add the Tailwind CSS class for animation
+            // Adjust the duration based on your needs (1 second in this example)
+        });
 
 
-      const burger = document.querySelector('.burger')
-         const navbar= document.querySelector('.navbar')
-         const opn = document.querySelector('.opn')
-         burger.addEventListener('click',()=>
-         {
-           navbar.classList.toggle('v-class')
-           opn.classList.toggle('h-nav')
-         })
-  const username = '<%=username%>'
-  if(username !== '')
-  {
+        const close_profile = document.getElementById('close_profile');
 
-  
-         const logoutsection = document.getElementById('logoutsection')
-         const logoutbutton = document.getElementById('logoutbutton')
-         document.getElementById('logoutbuttonopen').addEventListener('click',()=>
-         {
-             logoutbutton.style.display='block'  
-             document.getElementById('logoutbuttonclose').style.display='block'
-             document.getElementById('logoutbuttonopen').style.display='none'
-             logoutsection.style.marginTop='50px'
-               
-         })
-         document.getElementById('logoutbuttonclose').addEventListener('click',()=>
-         {
-            logoutbutton.style.display='none'  
-              document.getElementById('logoutbuttonclose').style.display='none'
-             document.getElementById('logoutbuttonopen').style.display='block'
-             logoutsection.style.marginTop='0px'
-             
-             
-         })
-
-         const moblogoutsection = document.getElementById('moblogoutsection')
-         const moblogoutbutton = document.getElementById('moblogoutbutton')
-         document.getElementById('moblogoutbuttonopen').addEventListener('click',()=>
-         {
-             moblogoutbutton.style.display='block'  
-             document.getElementById('moblogoutbuttonclose').style.display='block'
-             document.getElementById('moblogoutbuttonopen').style.display='none'
-             
-               
-         })
-         document.getElementById('moblogoutbuttonclose').addEventListener('click',()=>
-         {
-            moblogoutbutton.style.display='none'  
-              document.getElementById('moblogoutbuttonclose').style.display='none'
-             document.getElementById('moblogoutbuttonopen').style.display='block'
-             
-         })
-
-        }        
+        close_profile.addEventListener('click', () => {
+            profile_div.classList.remove('animate-slide-in-right');
+            profile_div.classList.add('animate-slide-in-left')
+            setTimeout(() => {
+                profile_div.classList.remove('animate-slide-in-left')
+                profile_div.classList.add('hidden');
+            }, 980);
+        })
      </script>
-  
 

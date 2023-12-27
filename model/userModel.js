@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const loginSchema= new Schema({
-    displayName:
+    name:
     {
         type:String,
     },
@@ -12,6 +12,77 @@ const loginSchema= new Schema({
   password:{
     type:String
   },
+  student_id:{
+    type:String
+  },
+  courses:[
+    {
+    course_domain_name:String,
+    course_domain_id:String,
+    course_start_date:String,
+    course_end_date:String,
+    payment:{
+      type:Boolean,
+      default:false
+    },
+    course_certificate_url:{
+      type:String,
+    }
+  }
+  ],
+  internships:[
+    {
+      internship_domain_name:String,
+      internship_domain_id:String,
+      internship_start_date:String,
+      internship_end_date:String,
+      payment:{
+        type:Boolean,
+        default:false
+      },
+      transaction_id:{
+        type:String,
+      },
+      internship_task_submmited:{
+        type:Boolean,
+        default:false
+      },
+      internship_certificate:{
+        type:Boolean,
+        default:false
+      },
+      internship_task1:{
+        type:String,
+      },
+      internship_task2:{
+        type:String,
+      },
+      internship_task1_github_url:{
+         type:String,
+         default:""
+      },
+      internship_task2_github_url:{
+          type:String,
+          default:""
+      },
+      internship_task1_linkedin_url:{
+        type:String,
+        default:""
+      },
+       internship_task2_linkedin_url:{
+        type:String,  
+        default:""
+       },
+      internship_lor:{
+        type:Boolean,
+        default:false
+      },
+      internship_offer_letter:{
+        type:Boolean,
+        default:false
+      }
+    }
+  ],
   is_admin:{
     type:Number,
     default:0
