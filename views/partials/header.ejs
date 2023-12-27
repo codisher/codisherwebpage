@@ -427,9 +427,12 @@
         }
         
         if (user_email !== 'undefined') {
+          var hostValue = window.location.hostname;
+          var portNumber = window.location.port;
+          var currentProtocol = window.location.protocol
             const new_user = decodeURIComponent(user_email.split('=')[1]);
             // Define the URL you want to fetch
-            var apiUrl = `http://localhost:7021/user_detail?email=${new_user}`;
+            var apiUrl = `${currentProtocol}//${hostValue}:${portNumber}/user_detail?email=${new_user}`;
             let fetchedData;
             document.getElementById('profile_section').innerHTML = `<div id="profile_button"><div class="bg-[#FEB656] p-2 rounded-full lg:flex hidden"><img src="../public/images/user_icon.png" class="h-10 w-10"></div>
                                                                    <div class="lg:hidden flex"><i class="fa fa-bars w3-xlarge"></i></div></div>`
