@@ -2,8 +2,8 @@ require('dotenv').config()
 const userModel = require("../model/userModel")
 const nodemailer = require('nodemailer');
 const {registerValidation} = require('../validations/authvalidation')
-const adminmail = process.env.SMAIL
-const adminpass = process.env.SPASS
+
+const host = process.env.host
 const bcrypt = require('bcrypt');
 const saltrounds = 10;
 const getLoginpage = async (req,res)=>
@@ -47,11 +47,11 @@ const user_register = async (req,res)=>
         req.body.student_id = `CD1625000${user_count+1}`
         const user = new userModel(req.body)
         const createUser = await user.save()
-        // const {error} = sendmail2(createUser.email,createUser._id)
-        // if(error)
-        // {
-        //     return res.status(200).json(error.message)
-        // }
+        const {error} = sendmail2(createUser.email,createUser._id)
+        if(error)
+        {
+            return res.status(200).json(error.message)
+        }
         return res.status(200).json("An Email Has Been Sent To Your Email Id .Please Verify Your Email Id")
     }
     catch(error)
@@ -81,7 +81,6 @@ const userLogin = async (req,res)=>
         
         }
          const encoded_email = encodeURIComponent(user.email)
-         console.log(encoded_email)
          res.cookie('user_email',encoded_email)
          return res.status(200).json("Logged_In")
     }
@@ -91,8 +90,7 @@ const userLogin = async (req,res)=>
     }
 }
 
-const smail=adminmail;
-const spass=adminpass;
+
 
 // MAil ka khel....................
 const sendmail2 = async (receiver,user_id)=>
@@ -106,16 +104,17 @@ let transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: smail, // generated ethereal user
-        pass: spass // generated ethereal password
+        user: process.env.mail, // generated ethereal user
+        pass: process.env.mail_password // generated ethereal password
     }
 }); 
+
 //Sending mail to provided emailid
 let info = transporter.sendMail({
-        from: smail, // sender address
+        from: process.env.mail, // sender address
         to: receiver, // list of receivers
         subject: subjectto, // Subject line
-        html: message +'<a href="https://thinkwht.com/verify?id='+user_id+'">Click Here To Verify</a>'
+        html: message +`<a href="${host}verify?id=${user_id}">Click Here To Verify</a>`
        
     },
     function(error) {
@@ -124,7 +123,9 @@ let info = transporter.sendMail({
     })
 
 }
+
 ///////////////////////////////
+
 const verifymail = async(req,res)=>
 {
     
@@ -137,6 +138,8 @@ const verifymail = async(req,res)=>
          console.log(error.message);
     }
 }
+
+
 // forgot password mail
 const sendmail3 = async (receiver,user_id)=>
 {
@@ -147,24 +150,25 @@ let transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: smail, // generated ethereal user
-        pass: spass // generated ethereal password
+        user: process.env.mail, // generated ethereal user
+        pass: process.env.mail_password // generated ethereal password
     }
 }); 
+
+
 //Sending mail to provided emailid
 let info = transporter.sendMail({
-        from: smail, // sender address
+        from: process.env.mail, // sender address
         to: receiver, // list of receivers
         subject: subjectto, // Subject line
-        html: message +'<a href="https://thinkwht.com/newpassword?id='+user_id+'"> Click Here to set new Password</a>'
+        html: message +`<a href="${host}/newpassword?id=${user_id}"> Click Here to set new Password</a>`
        
     },
     function(error) {
-        
         console.log(error.message)
     })
-
 }
+
 const sentpasswordresetlink = async (req,res)=>
 {
     res.render('sentpassword',{message:undefined,vmessage:undefined})
@@ -177,8 +181,8 @@ const takeemail = async (req,res)=>
     const user = await userModel.findOne({email:usermail})
     if(user)
     {
-        const user_id = user._id
-        sendmail3(usermail,user_id)
+         const user_id = user._id
+         sendmail3(usermail,user_id)
          res.render('sentpassword',{message:"verification"})
     }
     else
@@ -198,11 +202,12 @@ const forgotpassword = async(req,res)=>
 {
     const newpass = req.body.password
     const confirmpassword = req.body.cpassword
-   
+    const salt= await bcrypt.genSalt(10);
+    const securepassword = await bcrypt.hash(req.body.password,salt)
     try{
         if(newpass==confirmpassword)
         {
-            const vuser = await userModel.updateOne({_id:req.query.id},{$set:{password:newpass}});
+            const vuser = await userModel.updateOne({_id:req.query.id},{$set:{password:securepassword}});
             res.render('forgotpassword',{message:'verification'})
         }
         else
@@ -211,41 +216,12 @@ const forgotpassword = async(req,res)=>
         }
         
     }
-    catch{
+    catch(error){
+             console.log(error.message);
+    }
+}
 
-    }
-}
-//sendmail();
-/*
-const loginuser = async (req,res)=>
-{
-    try{
-    const lemail= req.body.email
-    const password = req.body.password
-    const user = await userModel.findOne({email:lemail})
-    if(user)
-    {
-        const pass= user.password
-        if(pass==password)
-        {
-            req.session.admin_id= user._id
-            displayName=user.displayName
-            res.redirect('/?displayName='+displayName)
-        }
-        else{
-            res.render('userlogin',{error:"Invalid Password"})
-        }
-    }
-    else{
-        res.render('userlogin',{error:"Invalid Credentials"})
-    }
-    }
-    catch(error)
-    {
-        console.log(error.message)
-    }
-}
-*/
+
 
 const getuserdetail = async (req,res)=>
 {
@@ -282,6 +258,8 @@ const userlogout = async (req,res)=>
         console.log(error.message)
     }
 }
+
+
 module.exports = {
     getLoginpage,
     getsignup,

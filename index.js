@@ -111,3 +111,51 @@ app.get(
 		}
 	}
 );
+
+
+app.get('/offer_letter/:email/:internship_id', async  (req, res) => {
+     
+	const intern_data = await userModel.findOne({email:req.params.email}).lean()
+	const internship_data = intern_data.internships.find((element) => element._id == req.params.internship_id)
+     let certificate_data;
+	if(internship_data == undefined)
+	{
+          console.log("Ye vala nhi match kiya hai ")
+	}
+	else
+	{
+		certificate_data= 
+		{
+			name : intern_data.name,
+            date:  internship_data.internship_end_date,
+			internship_name : internship_data.internship_domain_name,
+		}
+	}
+
+	res.render('offer_letter',{certificate_data});
+})
+
+// Generate Offer Letter And Pdf 
+const puppeteer = require('puppeteer');
+
+const generatePDF = async (req,res) => {
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+    const report_url =`${process.env.host}offer_letter/${req.params.email}/${req.params.internship_id}`
+	// Navigate to the URL
+	 await page.goto(report_url, { waitUntil: 'networkidle2' }); // Adjust waitUntil as needed
+  
+	// Generate PDF
+	 const pdfn = await page.pdf({
+	  format: 'A4',
+	  printBackground: true,
+	});
+  
+	await browser.close();
+	res.set({ 'Content-Type': 'application/pdf'});
+	res.send(pdfn);
+
+  };
+
+app.get('/generate_offer_letter/:email/:internship_id' , generatePDF)
+

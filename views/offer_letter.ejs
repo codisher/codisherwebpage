@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Internship Offer Letter</title>
+</head>
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.offer-letter-container {
+    text-align: left;
+    background-color: #010f8a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(8, 0, 80, 0.1);
+}
+
+h1 {
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 20px;
+    
+}
+
+p {
+    color: #fff;
+    margin: 10px 0;
+}
+
+strong {
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+/* Add additional styles as needed */
+
+</style>
+<body>
+    <div class="offer-letter-container">
+        <h1>Internship Offer Letter</h1>
+        <p>Date: <%=certificate_data.date%></p>
+        <p>Dear <strong><%=certificate_data.name%></strong></p>
+        <p>Congratulations! We are pleased to offer you a position as an intern in <strong><%=certificate_data.internship_name%></strong>. The details of the offer are as follows:</p>
+        <ul>
+            <li><strong>Position:</strong> Intern</li>
+            <li><strong>Duration:</strong> 1 Month</li>
+            <li><strong>Start Date:</strong></li>
+            <li><strong>Location:</strong></li>
+            <!-- Add any additional details as needed -->
+        </ul>
+        <p>We believe that your skills and enthusiasm will make a valuable contribution to our team. Please let us know your acceptance of this offer by <strong></strong>.</p>
+        <p>If you have any questions or require further information, please feel free to contact us at <strong></strong>.</p>
+        <p>We look forward to welcoming you to the team!</p>
+        <p>Sincerely,</p>
+        <p><strong></strong></p>
+        <!-- Add the company's contact information, signature, or additional details as needed -->
+    </div>
+</body>
+</html>
